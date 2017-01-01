@@ -9,41 +9,41 @@ import Header from 'components/app/Header';
 
 const Root = () => (
   <BrowserRouter>
-    <div style={{ color: '#8cc0b7' }}>
-      <h1>Hello, World!</h1>
-
+    <div>
       <Header />
 
-      <Match
-        exactly
-        pattern="/"
-        render={(props) => (
-          <LazyRoute
-            {...props}
-            component={System.import('../pages/Home')}
-          />
-        )}
-      />
+      <div>
+        <Match
+          exactly
+          pattern="/"
+          render={(props) => (
+            <LazyRoute
+              {...props}
+              component={System.import('../pages/Home')}
+            />
+          )}
+        />
 
-      <Match
-        exactly
-        pattern="/about"
-        render={(props) => (
-          <LazyRoute
-            {...props}
-            component={System.import('../pages/About')}
-          />
-        )}
-      />
+        <Match
+          exactly
+          pattern="/about"
+          render={(props) => (
+            <LazyRoute
+              {...props}
+              component={System.import('../pages/About')}
+            />
+          )}
+        />
 
-      <Miss
-        render={(props) => (
-          <LazyRoute
-            {...props}
-            component={System.import('../pages/HTTP404')}
-          />
-        )}
-      />
+        <Miss
+          render={(props) => (
+            <LazyRoute
+              {...props}
+              component={System.import('../pages/HTTP404')}
+            />
+          )}
+        />
+      </div>
     </div>
   </BrowserRouter>
 );
