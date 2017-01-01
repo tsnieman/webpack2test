@@ -1,35 +1,48 @@
 import React, { PropTypes } from 'react';
 
 // Routing
-import { BrowserRouter, Match, Miss, Link } from 'react-router'
-import HomePage from 'components/pages/Home'
-import AboutPage from 'components/pages/About'
+import { BrowserRouter, Match, Miss } from 'react-router'
+
+// Declarative webpack code-splitting using Webpack 2 + System.import
+import LazyRoute from 'lazy-route';
+import Header from 'components/app/Header';
 
 const Root = () => (
   <BrowserRouter>
     <div style={{ color: '#8cc0b7' }}>
       <h1>Hello, World!</h1>
 
-      <nav>
-        <ul>
-          <li>
-            <Link to="/">/home</Link>
-          </li>
+      <Header />
 
-          <li>
-            <Link to="/about">/about</Link>
-          </li>
-        </ul>
-      </nav>
+      <Match
+        exactly
+        pattern="/"
+        render={(props) => (
+          <LazyRoute
+            {...props}
+            component={System.import('../pages/Home')}
+          />
+        )}
+      />
 
-      <Match exactly pattern="/" component={HomePage} />
-
-      <Match exactly pattern="/about" component={AboutPage} />
+      <Match
+        exactly
+        pattern="/about"
+        render={(props) => (
+          <LazyRoute
+            {...props}
+            component={System.import('../pages/About')}
+          />
+        )}
+      />
 
       <Miss
-        component={() => {
-          <div>404!</div>
-        }}
+        render={(props) => (
+          <LazyRoute
+            {...props}
+            component={System.import('../pages/HTTP404')}
+          />
+        )}
       />
     </div>
   </BrowserRouter>

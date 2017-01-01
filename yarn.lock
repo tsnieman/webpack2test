@@ -2106,6 +2106,14 @@ lazy-cache@^1.0.3:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/lazy-cache/-/lazy-cache-1.0.4.tgz#a1d78fc3a50474cb80845d3b3b6e1da49a446e8e"
 
+lazy-route@^1.0.7:
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/lazy-route/-/lazy-route-1.0.7.tgz#ab9c4ed53d28733b10c617d0c2cc81221564724b"
+  dependencies:
+    react "^15.4.1"
+    react-dom "^15.4.1"
+    react-router "^4.0.0-alpha.6"
+
 lcid@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/lcid/-/lcid-1.0.0.tgz#308accafa0bc483a3867b4b6f2b9506251d1b835"
@@ -2678,7 +2686,7 @@ react-proxy@^3.0.0-alpha.0:
   dependencies:
     lodash "^4.6.1"
 
-react-router@4.0.0-alpha.6:
+react-router@4.0.0-alpha.6, react-router@^4.0.0-alpha.6:
   version "4.0.0-alpha.6"
   resolved "https://registry.yarnpkg.com/react-router/-/react-router-4.0.0-alpha.6.tgz#239fcf9a6ba7997021022c9b51d72d370f7b6bf4"
   dependencies:
