@@ -60,6 +60,7 @@ module.exports = {
 
   module: {
     rules: [
+      // Javascript
       {
         test: /\.js$/,
         exclude: [
@@ -85,6 +86,20 @@ module.exports = {
             ],
           },
         }],
+      },
+
+      // CSS
+      {
+        test: /\.css$/,
+        use: [
+          "style-loader",
+          {
+            loader: "css-loader",
+            options: {
+              modules: true,
+            },
+          }
+        ],
       },
     ],
   },
