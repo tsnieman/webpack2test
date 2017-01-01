@@ -12,9 +12,11 @@ module.exports = {
 
   // The entry point for different bundles
   // i.e. where the app "begins"/inits.
-  entry: {
-    app: '../src/index.js',
-  },
+  entry: [
+    'react-hot-loader/patch',
+    'webpack-hot-middleware/client',
+    '../src/index.js',
+  ],
 
   // The bundle outputs
   output: {
@@ -32,6 +34,12 @@ module.exports = {
       filename: 'commons.js',
       minChunks: 2,
     }),
+
+    new webpack.HotModuleReplacementPlugin(),
+
+    // https://github.com/webpack/docs/wiki/list-of-plugins#noerrorsplugin
+    // (added per webpack-hot-middleware example)
+    new webpack.NoErrorsPlugin(),
 
     // Generate HTML to serve
     new HtmlWebpackPlugin({
@@ -60,6 +68,10 @@ module.exports = {
         use: [{
           loader: 'babel-loader',
           options: {
+            plugins: [
+              'react-hot-loader/babel',
+            ],
+
             presets: [
               'es2015',
               'stage-0',

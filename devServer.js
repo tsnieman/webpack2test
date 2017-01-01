@@ -1,14 +1,19 @@
 var path = require('path');
 var webpack = require('webpack');
-var WebpackDevServer = require('webpack-dev-server');
-var config = require('./config/webpack.config.js');
+var express = require('express');
+var devMiddleware = require('webpack-dev-middleware');
+var hotMiddleware = require('webpack-hot-middleware');
+var config = require('./config/webpack.config');
 
-new WebpackDevServer(webpack(config), {
-  contentBase: path.join(__dirname, 'built'), // where index.html lives
+var app = express();
+var compiler = webpack(config);
+
+var PORT = 4200
+
+app.use(devMiddleware(compiler, {
   publicPath: config.output.publicPath, // where bundles live
 
-  // Need historyApiFallback to be able to refresh on dynamic route
-  historyApiFallback: { disableDotRule: true },
+  historyApiFallback: true,
 
   stats: {
     colors: true,
@@ -17,10 +22,18 @@ new WebpackDevServer(webpack(config), {
     chunkModules: false,
     assets: false,
   }
-}).listen(4200, 'localhost', function (err, result) {
+}));
+
+app.use(hotMiddleware(compiler));
+
+app.get('*', function (req, res) {
+  res.sendFile(path.join(__dirname, 'built', 'index.html'));
+});
+
+app.listen(PORT, function (err) {
   if (err) {
-    return console.log(err);
+    return console.error(err);
   }
 
-  console.log('Listening at http://localhost:4200');
+  console.log('Listening at http://localhost:' + PORT);
 });
