@@ -1,0 +1,26 @@
+{
+  "name": "webpack2test",
+  "version": "1.0.0",
+  "scripts": {
+    "clean": "rm -rf ./built/",
+    "build:dev": "npm run clean && webpack --config config/webpack.config.js",
+    "start:dev": "npm run build:dev && NODE_ENV=development node ./devServer.js",
+    "test": "NODE_ENV=test BABEL_DISABLE_CACHE=1 jest --no-cache ",
+    "test:watch": "npm run test -- --watch"
+  },
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "moment": "^2.17.1",
+    "react": "^15.4.1",
+    "react-dom": "^15.4.1"
+  },
+  "devDependencies": {
+    "babel-core": "^6.21.0",
+    "babel-loader": "^6.2.10",
+    "babel-preset-latest": "^6.16.0",
+    "babel-preset-react": "^6.16.0",
+    "webpack": "v2.1.0-beta.25",
+    "webpack-dev-server": "v2.1.0-beta.10"
+  }
+}
