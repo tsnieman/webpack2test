@@ -16,6 +16,8 @@ if (module.hot) {
   module.hot.accept('./components/app/Root', () => {
     // If you use Webpack 2 in ES modules mode, you can
     // use <Root /> here rather than require() a <NextRoot />.
+    // TODO pretty sure I have "ES modules mode" enabled,
+    // but just re-using Root doesn't seem to work. Sup?
     const NextRoot = require('./components/app/Root').default;
     ReactDOM.render(
       <AppContainer>

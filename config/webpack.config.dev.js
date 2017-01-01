@@ -73,7 +73,13 @@ module.exports = {
             ],
 
             presets: [
-              'es2015',
+              [
+                'es2015',
+                {
+                  // loose: true, // seems to be encouraged TODO more research
+                  modules: false, // "Webpack 2 in ES modules mode" aka native es2015 modules (for tree shaking)
+                },
+              ],
               'stage-0',
               'react',
             ],
