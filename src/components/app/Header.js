@@ -3,7 +3,7 @@ import { Link } from 'react-router'
 
 const Header = () => (
   <header>
-    <h1>webpack2test</h1>
+    <strong>🍞 webpack2test</strong>
 
     <nav>
       <ul>
