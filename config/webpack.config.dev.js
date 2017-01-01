@@ -13,7 +13,7 @@ module.exports = {
   // The entry point for different bundles
   // i.e. where the app "begins"/inits.
   entry: {
-    app: './app.js',
+    app: '../src/index.js',
   },
 
   // The bundle outputs
