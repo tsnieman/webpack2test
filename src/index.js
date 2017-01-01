@@ -10,8 +10,9 @@ console.log({ ...test })
 
 import React from 'react';
 import { render } from 'react-dom';
+import Root from 'components/app/Root';
 
 render(
-  <h1>Hello, World!</h1>,
+  <Root />,
   document.getElementById('root')
 );
