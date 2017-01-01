@@ -1,8 +1,8 @@
 import React, { PropTypes } from 'react';
-import styles from './Home.css';
+import './Home.css';
 
 const Home = () => (
-  <div className={styles.wrapper}>
+  <div styleName="wrapper">
     <h1>Home page!</h1>
   </div>
 );

@@ -70,6 +70,15 @@ module.exports = {
           loader: 'babel-loader',
           options: {
             plugins: [
+              [
+                'react-css-modules',
+                {
+                  // TODO  want to use something more like '[path]__[name]__[local]___[hash:base64:5]'
+                  // but it seems that the react css modules babel plugin  includes 'src' as part
+                  // of [path] and the css loader doesn't ... need to "align" them.
+                  generateScopedName: '[name]__[local]',
+                }
+              ],
               'react-hot-loader/babel',
             ],
 
@@ -97,6 +106,11 @@ module.exports = {
             loader: "css-loader",
             options: {
               modules: true,
+              importLoaders: 2,
+              // TODO  want to use something more like '[path]__[name]__[local]___[hash:base64:5]'
+              // but it seems that the react css modules babel plugin  includes 'src' as part
+              // of [path] and the css loader doesn't ... need to "align" them.
+              localIdentName: '[name]__[local]',
             },
           }
         ],
