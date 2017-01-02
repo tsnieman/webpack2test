@@ -6,4 +6,5 @@
 .wrapper h1 {
 	margin: 0;
 	font-family: sans-serif;
+	color: color(red alpha(20%));
 }

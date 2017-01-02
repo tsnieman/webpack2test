@@ -87,7 +87,8 @@ module.exports = {
               // of [path] and the css loader doesn't ... need to "align" them.
               localIdentName: '[name]__[local]',
             },
-          }
+          },
+          "postcss-loader", // options in postcss.config.js
         ],
       },
     ],
