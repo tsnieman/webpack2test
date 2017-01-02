@@ -19,7 +19,7 @@ const Root = () => (
           render={(props) => (
             <LazyRoute
               {...props}
-              component={System.import('../pages/Home')}
+              component={System.import('../pages/Home/Home')}
             />
           )}
         />
