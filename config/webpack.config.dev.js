@@ -68,32 +68,7 @@ module.exports = {
         ],
         use: [{
           loader: 'babel-loader',
-          options: {
-            plugins: [
-              [
-                'react-css-modules',
-                {
-                  // TODO  want to use something more like '[path]__[name]__[local]___[hash:base64:5]'
-                  // but it seems that the react css modules babel plugin  includes 'src' as part
-                  // of [path] and the css loader doesn't ... need to "align" them.
-                  generateScopedName: '[name]__[local]',
-                }
-              ],
-              'react-hot-loader/babel',
-            ],
-
-            presets: [
-              [
-                'es2015',
-                {
-                  // loose: true, // seems to be encouraged TODO more research
-                  modules: false, // "Webpack 2 in ES modules mode" aka native es2015 modules (for tree shaking)
-                },
-              ],
-              'stage-0',
-              'react',
-            ],
-          },
+          // options in .babelrc
         }],
       },
 

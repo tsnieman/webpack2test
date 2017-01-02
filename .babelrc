@@ -1,0 +1,42 @@
+{
+  // https://github.com/babel/babel-loader#options
+  // cacheDirectory: true,
+  "presets": [
+    [
+      'es2015',
+      {
+        // loose: true, // seems to be encouraged TODO more research
+        modules: false, // "Webpack 2 in ES modules mode" aka native es2015 modules (for tree shaking)
+      }
+    ],
+    'stage-0',
+    'react'
+  ],
+
+  "env": {
+    // only enable when process.env.NODE_ENV is 'development' or undefined
+    "development": {
+      "plugins": [
+        [
+          'react-css-modules',
+          {
+            // TODO  want to use something more like '[path]__[name]__[local]___[hash:base64:5]'
+            // but it seems that the react css modules babel plugin  includes 'src' as part
+            // of [path] and the css loader doesn't ... need to "align" them.
+            generateScopedName: '[name]__[local]',
+          }
+        ],
+        "react-hot-loader/babel"
+      ]
+    },
+
+    "test": {
+      "plugins": [
+        // https://facebook.github.io/jest/docs/tutorial-webpack.html#webpack-2
+        // webpack 2 offers native support for ES modules. However, Jest runs in
+        // Node, and thus requires ES modules to be transpiled to CommonJS modules
+        "transform-es2015-modules-commonjs"
+      ]
+    }
+  }
+}
