@@ -3,13 +3,13 @@ import ReactDOM from 'react-dom';
 import Root from 'components/app/Root';
 import { AppContainer } from 'react-hot-loader';
 
-const rootEl = document.getElementById('root')
+const rootEl = document.getElementById('root');
 
 ReactDOM.render(
   <AppContainer>
     <Root />
   </AppContainer>,
-  rootEl
+  rootEl,
 );
 
 if (module.hot) {
@@ -21,9 +21,9 @@ if (module.hot) {
     const NextRoot = require('./components/app/Root').default;
     ReactDOM.render(
       <AppContainer>
-         <NextRoot />
+        <NextRoot />
       </AppContainer>,
-      rootEl
+      rootEl,
     );
   });
 }

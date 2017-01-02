@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 
 // Routing
-import { BrowserRouter, Match, Miss } from 'react-router'
+import { BrowserRouter, Match, Miss } from 'react-router';
 
 // Declarative webpack code-splitting using Webpack 2 + System.import
 import LazyRoute from 'lazy-route';
@@ -16,7 +16,7 @@ const Root = () => (
         <Match
           exactly
           pattern="/"
-          render={(props) => (
+          render={props => (
             <LazyRoute
               {...props}
               component={System.import('../pages/Home/Home')}
@@ -27,7 +27,7 @@ const Root = () => (
         <Match
           exactly
           pattern="/about"
-          render={(props) => (
+          render={props => (
             <LazyRoute
               {...props}
               component={System.import('../pages/About')}
@@ -36,7 +36,7 @@ const Root = () => (
         />
 
         <Miss
-          render={(props) => (
+          render={props => (
             <LazyRoute
               {...props}
               component={System.import('../pages/HTTP404')}
