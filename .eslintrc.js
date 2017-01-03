@@ -6,11 +6,6 @@ module.exports = {
     "import"
   ],
   "settings": {
-    "import/external-module-folders": [
-      "node_modules",
-      "src",
-      "config",
-    ],
     "import/resolver": {
       "webpack": {
         "config": "./config/webpack.config.js",
