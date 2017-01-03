@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 
 // Routing
 import { BrowserRouter, Match, Miss } from 'react-router';
@@ -19,7 +19,7 @@ const Root = () => (
           render={props => (
             <LazyRoute
               {...props}
-              component={System.import('../pages/Home/Home')}
+              component={System.import('../pages/Home')}
             />
           )}
         />
@@ -49,7 +49,6 @@ const Root = () => (
 );
 
 Root.propTypes = {
-  TODO: PropTypes.any,
 };
 
 export default Root;

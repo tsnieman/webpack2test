@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 
 const HTTP404 = () => (
   <div>
@@ -7,7 +7,6 @@ const HTTP404 = () => (
 );
 
 HTTP404.propTypes = {
-  TODO: PropTypes.any,
 };
 
 export default HTTP404;

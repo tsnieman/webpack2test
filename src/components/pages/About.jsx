@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 
 const About = () => (
   <div>
@@ -7,7 +7,6 @@ const About = () => (
 );
 
 About.propTypes = {
-  TODO: PropTypes.any,
 };
 
 export default About;

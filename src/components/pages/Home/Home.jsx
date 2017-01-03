@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 import './Home.css';
 
 const Home = () => (
@@ -8,7 +8,6 @@ const Home = () => (
 );
 
 Home.propTypes = {
-  TODO: PropTypes.any,
 };
 
 export default Home;

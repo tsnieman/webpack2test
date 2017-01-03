@@ -1,3 +1,4 @@
+/* eslint-disable global-require, import/no-extraneous-dependencies */
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Root from 'components/app/Root';

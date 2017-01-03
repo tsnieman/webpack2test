@@ -1,8 +1,8 @@
 // Header.js
 import React from 'react';
-import Header from './Header.js';
-import renderer from 'react-test-renderer';
+import renderer from 'react-test-renderer'; // eslint-disable-line import/no-extraneous-dependencies
 import { MemoryRouter } from 'react-router';
+import Header from './Header';
 
 test('Header is tested', () => {
   const component = renderer.create(

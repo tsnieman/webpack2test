@@ -15,7 +15,7 @@ module.exports = {
   entry: [
     'react-hot-loader/patch',
     'webpack-hot-middleware/client',
-    '../src/index.js',
+    '../src/index.jsx',
   ],
 
   // The bundle outputs
@@ -56,13 +56,16 @@ module.exports = {
       path.resolve(__dirname, "..", "src"),
       path.resolve(__dirname, "..", "config"),
     ],
+
+    // Seems to resolve a "Can't resolve './Header'" (i.e. index) error from webpack
+    extensions: ['.js', '.jsx'],
   },
 
   module: {
     rules: [
       // Javascript
       {
-        test: /\.js$/,
+        test: /\.(js|jsx)$/,
         exclude: [
           /node_modules/,
         ],
