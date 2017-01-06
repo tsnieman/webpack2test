@@ -1,7 +1,8 @@
 import React from 'react';
+import './About.css';
 
 const About = () => (
-  <div>
+  <div styleName="wrapper">
     <h1>About page!</h1>
   </div>
 );

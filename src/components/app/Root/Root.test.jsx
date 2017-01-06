@@ -1,12 +1,12 @@
 import React from 'react';
 import renderer from 'react-test-renderer'; // eslint-disable-line import/no-extraneous-dependencies
 import { MemoryRouter } from 'react-router';
-import Header from './Header';
+import Root from './Root';
 
-test('Header is tested', () => {
+test('Root is tested', () => {
   const component = renderer.create(
     <MemoryRouter>
-      <Header />
+      <Root />
     </MemoryRouter>,
   );
 

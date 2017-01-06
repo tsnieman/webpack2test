@@ -1,7 +1,8 @@
 import React from 'react';
+import './HTTP404.css';
 
 const HTTP404 = () => (
-  <div>
+  <div styleName="wrapper">
     <h1>HTTP404 page!</h1>
   </div>
 );

@@ -19,7 +19,7 @@ const Root = () => (
           render={props => (
             <LazyRoute
               {...props}
-              component={System.import('../pages/Home')}
+              component={System.import('../../pages/Home')}
             />
           )}
         />
@@ -30,7 +30,7 @@ const Root = () => (
           render={props => (
             <LazyRoute
               {...props}
-              component={System.import('../pages/About')}
+              component={System.import('../../pages/About')}
             />
           )}
         />
@@ -39,7 +39,7 @@ const Root = () => (
           render={props => (
             <LazyRoute
               {...props}
-              component={System.import('../pages/HTTP404')}
+              component={System.import('../../pages/HTTP404')}
             />
           )}
         />
