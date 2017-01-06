@@ -1,0 +1,5 @@
+exports[`test RootRouter is tested 1`] = `
+<div>
+  RootRouter
+</div>
+`;
