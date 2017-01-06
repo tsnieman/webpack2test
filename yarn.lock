@@ -440,21 +440,20 @@ babel-plugin-jest-hoist@^18.0.0:
   version "18.0.0"
   resolved "https://registry.yarnpkg.com/babel-plugin-jest-hoist/-/babel-plugin-jest-hoist-18.0.0.tgz#4150e70ecab560e6e7344adc849498072d34e12a"
 
-babel-plugin-react-css-modules@^1.2.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/babel-plugin-react-css-modules/-/babel-plugin-react-css-modules-1.2.0.tgz#0035697d9d150705fa2dd744753141e14dbd54a5"
+babel-plugin-react-css-modules@^2.1.4:
+  version "2.1.4"
+  resolved "https://registry.yarnpkg.com/babel-plugin-react-css-modules/-/babel-plugin-react-css-modules-2.1.4.tgz#4e9b7c25cf5c483efcf4db849cb2f92b9cac0578"
   dependencies:
     babel-plugin-syntax-jsx "^6.18.0"
     babel-types "^6.19.0"
     generic-names "^1.0.2"
     postcss "^5.2.6"
-    postcss-modules "^0.5.2"
+    postcss-modules "^0.6.2"
     postcss-modules-extract-imports "^1.0.1"
     postcss-modules-local-by-default "^1.1.1"
     postcss-modules-parser "^1.1.0"
     postcss-modules-scope "^1.0.2"
     postcss-modules-values "^1.2.2"
-    postcss-scss "^0.4.0"
 
 babel-plugin-syntax-async-functions@^6.8.0:
   version "6.13.0"
@@ -2383,7 +2382,7 @@ generate-object-property@^1.1.0:
   dependencies:
     is-property "^1.0.0"
 
-generic-names@^1.0.1, generic-names@^1.0.2:
+generic-names@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/generic-names/-/generic-names-1.0.2.tgz#e25b7feceb5b5a8f28f5f972a7ccfe57e562adcd"
   dependencies:
@@ -4192,14 +4191,14 @@ postcss-modules-values@1.2.2, postcss-modules-values@^1.1.0, postcss-modules-val
     icss-replace-symbols "^1.0.2"
     postcss "^5.0.14"
 
-postcss-modules@^0.5.2:
-  version "0.5.2"
-  resolved "https://registry.yarnpkg.com/postcss-modules/-/postcss-modules-0.5.2.tgz#9d682fed3f282bd64b2aa4feb6f22a2af435ffda"
+postcss-modules@^0.6.2:
+  version "0.6.2"
+  resolved "https://registry.yarnpkg.com/postcss-modules/-/postcss-modules-0.6.2.tgz#3c3301ec8064bcfb5cb1d3248330bdeb5cf6e400"
   dependencies:
     css-modules-loader-core "^1.0.1"
-    generic-names "^1.0.1"
-    postcss "^5.1.2"
-    string-hash "^1.1.0"
+    generic-names "^1.0.2"
+    postcss "^5.2.8"
+    string-hash "^1.1.1"
 
 postcss-normalize-charset@^1.1.0:
   version "1.1.1"
@@ -4243,12 +4242,6 @@ postcss-reduce-transforms@^1.0.3:
     has "^1.0.1"
     postcss "^5.0.8"
     postcss-value-parser "^3.0.1"
-
-postcss-scss@^0.4.0:
-  version "0.4.0"
-  resolved "https://registry.yarnpkg.com/postcss-scss/-/postcss-scss-0.4.0.tgz#087c052c529b9270d9580bd1248a0f93d3b40d57"
-  dependencies:
-    postcss "^5.2.5"
 
 postcss-selector-parser@^2.0.0:
   version "2.2.2"
@@ -4295,7 +4288,7 @@ postcss@5.1.2:
     source-map "^0.5.6"
     supports-color "^3.1.2"
 
-postcss@^5.0.10, postcss@^5.0.11, postcss@^5.0.12, postcss@^5.0.13, postcss@^5.0.14, postcss@^5.0.16, postcss@^5.0.2, postcss@^5.0.4, postcss@^5.0.5, postcss@^5.0.6, postcss@^5.0.8, postcss@^5.1.2, postcss@^5.2.5, postcss@^5.2.6:
+postcss@^5.0.10, postcss@^5.0.11, postcss@^5.0.12, postcss@^5.0.13, postcss@^5.0.14, postcss@^5.0.16, postcss@^5.0.2, postcss@^5.0.4, postcss@^5.0.5, postcss@^5.0.6, postcss@^5.0.8, postcss@^5.2.6, postcss@^5.2.8:
   version "5.2.8"
   resolved "https://registry.yarnpkg.com/postcss/-/postcss-5.2.8.tgz#05720c49df23c79bda51fd01daeb1e9222e94390"
   dependencies:
@@ -5017,7 +5010,7 @@ strict-uri-encode@^1.0.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/strict-uri-encode/-/strict-uri-encode-1.1.0.tgz#279b225df1d582b1f54e65addd4352e18faa0713"
 
-string-hash@^1.1.0:
+string-hash@^1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/string-hash/-/string-hash-1.1.1.tgz#8e85bed291e0763b8f6809d9c3368fea048db3dc"
 

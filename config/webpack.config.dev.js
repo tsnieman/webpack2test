@@ -1,6 +1,7 @@
 'use strict';
 
 const path = require('path');
+const contextPath = path.resolve(__dirname, '..', 'src')
 
 // Webpack
 const webpack = require('webpack');
@@ -8,7 +9,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   // The 'base folder' for the app
-  context: path.resolve(__dirname, '..', 'src'),
+  context: contextPath,
 
   // The entry point for different bundles
   // i.e. where the app "begins"/inits.
@@ -85,10 +86,7 @@ module.exports = {
             options: {
               modules: true,
               importLoaders: 2,
-              // TODO  want to use something more like '[path]__[name]__[local]___[hash:base64:5]'
-              // but it seems that the react css modules babel plugin  includes 'src' as part
-              // of [path] and the css loader doesn't ... need to "align" them.
-              localIdentName: '[name]__[local]',
+              localIdentName: '[path]__[name]__[local]__[hash:base64:5]',
             },
           },
           "postcss-loader", // options in postcss.config.js
