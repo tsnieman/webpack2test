@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import Root from 'components/app/Root';
 import { AppContainer } from 'react-hot-loader';
 
-const rootEl = document.getElementById('root');
+const rootEl = document.getElementById('app-index');
 
 ReactDOM.render(
   <AppContainer>
