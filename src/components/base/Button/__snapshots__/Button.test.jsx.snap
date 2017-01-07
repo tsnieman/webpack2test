@@ -1,0 +1,6 @@
+exports[`test Button is tested 1`] = `
+<button
+  className=""
+  disabled={false}
+  styleName="button-default" />
+`;

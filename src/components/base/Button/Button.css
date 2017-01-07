@@ -1,0 +1,134 @@
+@import 'styles/_variables.css';
+
+:root {
+	--button-padding-v: 0.5em;
+	--button-padding-h: 0.75em;
+	--button-padding: var(--button-padding-v) var(--button-padding-h);
+
+	--button-default-background-color: color(var(--color-black) alpha(0.1));
+	--button-default-hover-background-color: color(var(--button-default-background-color) alpha(0.2));
+	--button-default-active-background-color: color(var(--button-default-background-color) lightness(-15%));
+
+	--button-disabled-background-color: color(var(--color-disabled-background) alpha(0.2));
+	--button-disabled-hover-background-color: var(--button-disabled-background-color);
+
+	--button-negative-background-color: var(--color-negative);
+	--button-negative-hover-background-color: color(var(--button-negative-background-color) lightness(-10%));
+	--button-negative-active-background-color: color(var(--button-negative-background-color) lightness(-15%));
+
+	--button-positive-background-color: var(--color-positive);
+	--button-positive-hover-background-color: color(var(--button-positive-background-color) lightness(-10%));
+	--button-positive-active-background-color: color(var(--button-positive-background-color) lightness(-15%));
+
+	--button-background-transition: 0.12s ease-in-out background;
+
+	--button-border-radius: 2px;
+
+	--easeInCirc: cubic-bezier(0.600, 0.040, 0.980, 0.335);
+}
+
+/* used when the button is :disabled and hovered to
+ * indicate that the button isn't usable. */
+@keyframes nope {
+  0% {
+    transform: rotate(0.5deg) translateX(-1px);
+  }
+
+  50% {
+    transform: rotate(-0.25deg) translateX(1px);
+  }
+
+  100% {
+    transform: rotate(0);
+  }
+}
+
+.button-base {
+  display: inline-block;
+
+  padding: var(--button-padding);
+
+  font-family: var(--site-font-family);
+  line-height: 1;
+
+  /* should buttons never be pointers? https://medium.com/simple-human/buttons-shouldnt-have-a-hand-cursor-b11e99ca374b#.mxi539ydo */
+  cursor: default; 
+
+  border: 0.1em solid color(var(--color-black) alpha(15%));
+  border-radius: var(--button-border-radius);
+
+  transition: var(--button-background-transition);
+
+  &:hover {
+  }
+
+  &:active {
+    transition: none;
+  }
+
+  &:disabled {
+    background: var(--button-disabled-background-color);
+    color: var(--color-disabled-text);
+    border: 1px dashed;
+    cursor: not-allowed;
+
+    &:hover {
+      background: var(--button-disabled-hover-background-color);
+
+      animation: nope 0.3s;
+      animation-iteration-count: 1;
+      animation-timing-function: var(--easeInCirc);
+      animation-delay: 0.2s;
+    }
+  }
+}
+
+.button-default {
+  composes: button-base;
+  background: var(--button-default-background-color);
+  color: inherit;
+
+  &:hover {
+    background: var(--button-default-hover-background-color);
+  }
+
+  &:active {
+    background: var(--button-default-active-background-color);
+  }
+}
+
+.button-negative {
+  composes: button-base;
+
+  background: var(--button-negative-background-color);
+  color: var(--color-light-on-dark);
+  font-weight: 700;
+
+  &:hover {
+    background: var(--button-negative-hover-background-color);
+  }
+
+  &:active {
+    background: var(--button-negative-active-background-color);
+  }
+}
+
+.button-positive {
+  composes: button-base;
+
+  background: var(--button-positive-background-color);
+  color: var(--color-light-on-dark);
+
+  &:hover {
+    background: var(--button-positive-hover-background-color);
+  }
+
+  &:active {
+    background: var(--button-positive-active-background-color);
+  }
+}
+
+/* TODO even bother? */
+a.button-base {
+  cursor: pointer;
+}
