@@ -5,8 +5,10 @@
     "clean": "rm -rf ./built/",
     "build:dev": "npm run clean && webpack --config config/webpack.config.js",
     "start:dev": "npm run build:dev && NODE_ENV=development node ./devServer.js",
-    "test": "NODE_ENV=test BABEL_DISABLE_CACHE=1 jest --no-cache ",
-    "test:watch": "npm run test -- --watch",
+    "jest": "NODE_ENV=test BABEL_DISABLE_CACHE=1 jest --no-cache",
+    "jest:watch": "npm run jest -- --watch",
+    "test": "npm run jest && npm run lint",
+    "test:watch": "npm run jest:watch",
     "lint": "./node_modules/.bin/eslint --ext .js,.jsx src"
   },
   "main": "index.js",
