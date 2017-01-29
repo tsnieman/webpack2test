@@ -1,6 +1,5 @@
 exports[`test Button is tested 1`] = `
 <button
-  className=""
-  disabled={false}
-  styleName="button-default" />
+  className="components-base-Button-__Button__button-default__3qwt0 components-base-Button-__Button__button-base__2WRVG"
+  disabled={false} />
 `;
