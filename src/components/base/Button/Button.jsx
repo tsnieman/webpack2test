@@ -70,11 +70,13 @@ Button.propTypes = {
 };
 
 Button.defaultProps = {
+  children: '',
   className: '',
 
   // Button-specific
   disabled: false,
   variant: 'default',
+  to: undefined,
 };
 
 export default Button;
