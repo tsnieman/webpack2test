@@ -97,4 +97,12 @@ module.exports = {
 
   // Source maps
   devtool: 'cheap-module-eval-source-map',
+
+  // Performance budgets
+  // https://medium.com/webpack/webpack-performance-budgets-13d4880fbf6d
+  performance: {
+    maxAssetSize: 100000, // in bytes (example: 10000 = 10kb)
+    maxEntrypointSize: 300000, // in bytes (example: 10000 = 10kb)
+    hints: 'warning'
+  },
 };
