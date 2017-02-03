@@ -38,9 +38,8 @@ module.exports = {
 
     new webpack.HotModuleReplacementPlugin(),
 
-    // https://github.com/webpack/docs/wiki/list-of-plugins#noerrorsplugin
-    // (added per webpack-hot-middleware example)
-    new webpack.NoErrorsPlugin(),
+		// Recommended (NoErrorsPlugin is deprecated)
+    new webpack.NoEmitOnErrorsPlugin(),
 
     // Generate HTML to serve
     new HtmlWebpackPlugin({
