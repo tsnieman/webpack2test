@@ -6,6 +6,7 @@ const contextPath = path.resolve(__dirname, '..', 'src')
 // Webpack
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const PreloadWebpackPlugin = require('preload-webpack-plugin');
 
 module.exports = {
   // The 'base folder' for the app
@@ -38,7 +39,7 @@ module.exports = {
 
     new webpack.HotModuleReplacementPlugin(),
 
-		// Recommended (NoErrorsPlugin is deprecated)
+    // Recommended (NoErrorsPlugin is deprecated)
     new webpack.NoEmitOnErrorsPlugin(),
 
     // Generate HTML to serve
@@ -46,6 +47,15 @@ module.exports = {
       template: path.join(__dirname, '../src/index.html'),
       filename: 'index.html',
       inject: 'body',
+    }),
+
+    // Preload
+    // https://github.com/googlechrome/preload-webpack-plugin
+    // (TODO learn to configure this sensibly lol)
+    new PreloadWebpackPlugin({
+      rel: 'preload',
+      as: 'script',
+      include: 'asyncChunks'
     }),
   ],
 
