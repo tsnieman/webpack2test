@@ -52,10 +52,4 @@ const RootRouter = () => (
 RootRouter.propTypes = {
 };
 
-// Jest doesn't like the System.import above,
-// so we're just not really gonna test this for now.
-if (process.env.NODE_ENV === 'test') {
-  module.exports = () => <div>RootRouter</div>;
-} else {
-  module.exports = RootRouter;
-}
+export default RootRouter;
