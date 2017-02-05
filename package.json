@@ -42,7 +42,7 @@
     "eslint-plugin-react": "^6.8.0",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^18.1.0",
-    "postcss-color-function": "^2.0.1",
+    "postcss-color-function": "^3.0.0",
     "postcss-custom-properties": "^5.0.1",
     "postcss-import": "^9.0.0",
     "postcss-loader": "^1.2.1",
