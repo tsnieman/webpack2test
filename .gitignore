@@ -5,3 +5,7 @@ npm-debug.log
 .*.swp
 .*.swo
 .DS_Store
+
+# SSL cert stuff
+cert.pem
+key.pem
