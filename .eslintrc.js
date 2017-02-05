@@ -17,4 +17,7 @@ module.exports = {
     "expect": true, // TODO only in *.test.* files?
     "document": true,
   },
+  "rules": {
+    "jsx-a11y/no-marquee": 0, // for some reason am getting "Definition for rule 'jsx-a11y/no-marquee' was not found  jsx-a11y/no-marquee"
+  }
 };
