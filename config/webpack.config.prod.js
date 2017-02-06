@@ -9,14 +9,14 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const PreloadWebpackPlugin = require('preload-webpack-plugin');
 
 module.exports = {
+	target: "web",
+
   // The 'base folder' for the app
   context: contextPath,
 
   // The entry point for different bundles
   // i.e. where the app "begins"/inits.
   entry: [
-    'react-hot-loader/patch',
-    'webpack-hot-middleware/client',
     '../src/index.jsx',
   ],
 
@@ -32,11 +32,11 @@ module.exports = {
     // COMMON CHUNKS
     // any modules that get loaded ${minChunks} or more times,
     // it will bundle that into a commons.js
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'commons',
-      filename: 'commons.js',
-      minChunks: 2,
-    }),
+		new webpack.optimize.CommonsChunkPlugin({
+			name: 'commons',
+			filename: 'commons.js',
+			minChunks: 2,
+		}),
 
     new webpack.HotModuleReplacementPlugin(),
 
@@ -49,16 +49,42 @@ module.exports = {
       filename: 'index.html',
       inject: 'body',
 			// favicon: paths.appFavicon, // TODO
+			minify: {
+				removeComments: true,
+				collapseWhitespace: true,
+				removeRedundantAttributes: true,
+				useShortDoctype: true,
+				removeEmptyAttributes: true,
+				removeStyleLinkTypeAttributes: true,
+				keepClosingSlash: true,
+				minifyJS: true,
+				minifyCSS: true,
+				minifyURLs: true
+			}
     }),
+
+		new webpack.optimize.UglifyJsPlugin({
+			compress: {
+				screw_ie8: true, // React doesn't support IE8
+				warnings: false
+			},
+			mangle: {
+				screw_ie8: true
+			},
+			output: {
+				comments: false,
+				screw_ie8: true
+			}
+		}),
 
     // Preload
     // https://github.com/googlechrome/preload-webpack-plugin
     // (TODO learn to configure this sensibly lol)
-    new PreloadWebpackPlugin({
-      rel: 'preload',
-      as: 'script',
-      include: 'asyncChunks'
-    }),
+		new PreloadWebpackPlugin({
+			rel: 'preload',
+			as: 'script',
+			include: 'asyncChunks'
+		}),
   ],
 
   resolve: {
@@ -107,7 +133,7 @@ module.exports = {
   },
 
   // Source maps
-  devtool: 'cheap-module-eval-source-map',
+  devtool: false,
 
   // Performance budgets
   // https://medium.com/webpack/webpack-performance-budgets-13d4880fbf6d

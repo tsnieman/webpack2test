@@ -19,10 +19,6 @@ var ensureSecureMiddleware = function ensureSecureMiddleware(req, res, next){
   res.redirect(`https://${req.hostname}:${HTTPS_PORT}${req.url}`); // express 4.x
 };
 
-// Setup webpack
-var webpackConfig = require('./config/webpack.config');
-var compiler = webpack(webpackConfig);
-
 // Setup the app.
 // --------------
 var app = express();
@@ -30,21 +26,30 @@ var app = express();
 // Redirect to HTTPS
 app.all('*', ensureSecureMiddleware); // keep at top of routing calls
 
-app.use(devMiddleware(compiler, {
-  publicPath: webpackConfig.output.publicPath, // where bundles live
+if (process.env.NODE_ENV === 'development') {
+	// Setup webpack
+	var webpackConfig = require('./config/webpack.config');
+	var compiler = webpack(webpackConfig);
 
-  historyApiFallback: true,
+	// Dev middleware
+	app.use(devMiddleware(compiler, {
+		publicPath: webpackConfig.output.publicPath, // where bundles live
 
-  stats: {
-    colors: true,
+		historyApiFallback: true,
 
-    // Disable build noise.
-    chunkModules: false,
-    assets: false,
-  }
-}));
+		stats: {
+			colors: true,
 
-app.use(hotMiddleware(compiler));
+			// Disable build noise.
+			chunkModules: false,
+			assets: false,
+		}
+	}));
+
+	app.use(hotMiddleware(compiler));
+} else {
+	app.use('/built', express.static('built'));
+}
 
 app.get('*', function (req, res) {
   res.sendFile(path.join(__dirname, 'built', 'index.html'));
