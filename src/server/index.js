@@ -3,6 +3,7 @@ const fs = require('fs');
 const https = require('https');
 
 const express = require('express');
+const bodyParser = require('body-parser');
 
 const webpack = require('webpack');
 const webpackConfig = require('../../config/webpack.config');
@@ -14,23 +15,21 @@ const {
 
 const devMiddleware = require('webpack-dev-middleware');
 const hotMiddleware = require('webpack-hot-middleware');
-
-const ensureSecureMiddleware = function ensureSecureMiddleware(req, res, next) {
-  if (req.secure) {
-    // OK, continue
-    return next();
-  }
-
-  // handle port numbers if you need non defaults
-  return res.redirect(`https://${req.hostname}:${HTTPS_PORT}${req.url}`); // express 4.x
-};
+const httpsEverywhereMiddleware = require('./middleware/httpsEverywhere');
+const securityMiddlewares = require('./middleware/security');
 
 // Setup the app.
 // --------------
 const app = express();
 
+// Make sure the body is parsed before everything else (via https://github.com/analog-nico/hpp#getting-started)
+app.use(bodyParser.urlencoded({ extended: true }));
+
+// Security middlewares
+app.use(...securityMiddlewares);
+
 // Redirect to HTTPS
-app.all('*', ensureSecureMiddleware); // keep at top of routing calls
+app.all('*', httpsEverywhereMiddleware); // keep at top of routing calls
 
 if (process.env.NODE_ENV === 'development') {
   // Setup webpack
