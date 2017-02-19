@@ -7,8 +7,10 @@ const express = require('express');
 const webpack = require('webpack');
 const webpackConfig = require('../../config/webpack.config');
 
-const HTTP_PORT = 4200;
-const HTTPS_PORT = 8443;
+const {
+  HTTP_PORT,
+  HTTPS_PORT,
+} = require('../constants/server');
 
 const devMiddleware = require('webpack-dev-middleware');
 const hotMiddleware = require('webpack-hot-middleware');
