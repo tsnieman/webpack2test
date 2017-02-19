@@ -17,15 +17,15 @@ module.exports = {
   entry: [
     'react-hot-loader/patch',
     'webpack-hot-middleware/client',
-    '../src/index.jsx',
+    '../src/app.js',
   ],
 
   // The bundle outputs
   output: {
-    path: path.resolve(__dirname, '..', 'built'),
+    path: path.resolve(__dirname, '..', 'public', 'built'),
     filename: '[name].bundle.js',
-    publicPath: '/built/', // as it will be served
-		chunkFilename: '[name]-[chunkhash].js',
+    publicPath: '/public/', // as it will be served
+    chunkFilename: '[name]-[chunkhash].js',
   },
 
   plugins: [
@@ -48,7 +48,7 @@ module.exports = {
       template: path.join(__dirname, '../src/index.html'),
       filename: 'index.html',
       inject: 'body',
-			// favicon: paths.appFavicon, // TODO
+      favicon: path.join(__dirname, '..', 'public', 'images', 'favicon.ico'),
     }),
 
     // Preload
@@ -64,9 +64,10 @@ module.exports = {
   resolve: {
     // Where to look for modules (i.e. for importing/requiring)
     modules: [
-      "node_modules",
-      path.resolve(__dirname, "..", "src"),
-      path.resolve(__dirname, "..", "config"),
+      'node_modules',
+      path.resolve(__dirname, '..', 'src'),
+      path.resolve(__dirname, '..', 'config'),
+      path.resolve(__dirname, '..', 'public'),
     ],
 
     // Seems to resolve a "Can't resolve './Header'" (i.e. index) error from webpack
@@ -91,16 +92,35 @@ module.exports = {
       {
         test: /\.css$/,
         use: [
-          "style-loader",
+          'style-loader',
           {
-            loader: "css-loader",
+            loader: 'css-loader',
             options: {
               modules: true,
               importLoaders: 2,
               localIdentName: '[path]__[name]__[local]__[hash:base64:5]',
             },
           },
-          "postcss-loader", // options in postcss.config.js
+          'postcss-loader', // options in postcss.config.js
+        ],
+      },
+
+      // Images
+      {
+        test: /\.(jpe?g|png|gif|svg|webp|ico)$/i,
+        use: [
+        // TODO decide between file-loader and url-loader
+        // .. not sure which is "better"
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]?[hash]',
+            },
+          },
+          //{
+            //loader: 'url-loader',
+            //options: {},
+          //},
         ],
       },
     ],

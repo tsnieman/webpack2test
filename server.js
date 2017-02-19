@@ -27,32 +27,32 @@ var app = express();
 app.all('*', ensureSecureMiddleware); // keep at top of routing calls
 
 if (process.env.NODE_ENV === 'development') {
-	// Setup webpack
-	var webpackConfig = require('./config/webpack.config');
-	var compiler = webpack(webpackConfig);
+  // Setup webpack
+  var webpackConfig = require('./config/webpack.config');
+  var compiler = webpack(webpackConfig);
 
-	// Dev middleware
-	app.use(devMiddleware(compiler, {
-		publicPath: webpackConfig.output.publicPath, // where bundles live
+  // Dev middleware
+  app.use(devMiddleware(compiler, {
+    publicPath: webpackConfig.output.publicPath, // where bundles live
 
-		historyApiFallback: true,
+    historyApiFallback: true,
 
-		stats: {
-			colors: true,
+    stats: {
+      colors: true,
 
-			// Disable build noise.
-			chunkModules: false,
-			assets: false,
-		}
-	}));
+      // Disable build noise.
+      chunkModules: false,
+      assets: false,
+    }
+  }));
 
-	app.use(hotMiddleware(compiler));
+  app.use(hotMiddleware(compiler));
 } else {
-	app.use('/built', express.static('built'));
+  app.use('/public', express.static('public/built'));
 }
 
 app.get('*', function (req, res) {
-  res.sendFile(path.join(__dirname, 'built', 'index.html'));
+  res.sendFile(path.join(__dirname, 'public', 'built', 'index.html'));
 });
 
 // Launch http server.
@@ -68,9 +68,9 @@ app.listen(HTTP_PORT, function (err) {
 // Launch https server.
 // ---------------------------
 var sslOptions = {
-	key: fs.readFileSync('./key.pem'),
-	cert: fs.readFileSync('./cert.pem'),
-	passphrase: process.env.SSL_CERT_PASS
+  key: fs.readFileSync('./key.pem'),
+  cert: fs.readFileSync('./cert.pem'),
+  passphrase: process.env.SSL_CERT_PASS
 };
 
 var httpsServer = https.createServer(sslOptions, app);

@@ -19,5 +19,6 @@ module.exports = {
   },
   "rules": {
     "jsx-a11y/no-marquee": 0, // for some reason am getting "Definition for rule 'jsx-a11y/no-marquee' was not found  jsx-a11y/no-marquee"
+    "import/first": 0, // seems like an arbitrary rule TODO research rationale
   }
 };
