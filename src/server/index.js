@@ -17,6 +17,7 @@ const devMiddleware = require('webpack-dev-middleware');
 const hotMiddleware = require('webpack-hot-middleware');
 const httpsEverywhereMiddleware = require('./middleware/httpsEverywhere');
 const securityMiddlewares = require('./middleware/security');
+const compression = require('compression');
 
 // Setup the app.
 // --------------
@@ -25,8 +26,14 @@ const app = express();
 // Make sure the body is parsed before everything else (via https://github.com/analog-nico/hpp#getting-started)
 app.use(bodyParser.urlencoded({ extended: true }));
 
+// Hide software information to limit hacker insight.
+app.disable('x-powered-by');
+
 // Security middlewares
 app.use(...securityMiddlewares);
+
+// Compression middleware
+app.use(compression());
 
 // Redirect to HTTPS
 app.all('*', httpsEverywhereMiddleware); // keep at top of routing calls
