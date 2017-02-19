@@ -19,6 +19,7 @@ By default, the app is configured to redirect all traffic to HTTPS. As such, you
 
 - Generate SSL certificates: `openssl req -x509 -newkey rsa:2048 -keyout key.pem -out cert.pem -days 365`
 	- **NOTE**: when you see `Common Name (e.g. server FQDN or YOUR name) []:`, specify `localhost`.
+  - **NOTE**: application currently looking for `key.pem` and `cert.pem` in `./src/server`, so put those files there.
 - Set the cert password as an environment variable: `SSL_CERT_PASS=yourSslCertPass yarn run start:dev`
 - Add the cert to Chrome to avoid warnings about it: [http://stackoverflow.com/a/15076602](http://stackoverflow.com/a/15076602)
 

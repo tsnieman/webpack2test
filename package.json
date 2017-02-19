@@ -4,9 +4,9 @@
   "scripts": {
     "clean": "rm -rf ./public/built",
     "build:dev": "npm run clean && webpack --config config/webpack.config.js",
-    "start:dev": "npm run build:dev && NODE_ENV=development node ./server.js",
+    "start:dev": "npm run build:dev && NODE_ENV=development node ./src/server/index.js",
     "build:prod": "npm run clean && webpack -p --config config/webpack.config.js",
-    "start:prod": "export NODE_ENV=production && npm run build:prod && NODE_ENV=production node ./server.js",
+    "start:prod": "export NODE_ENV=production && npm run build:prod && NODE_ENV=production node ./src/server/index.js",
     "jest": "NODE_ENV=test BABEL_DISABLE_CACHE=1 ./node_modules/.bin/jest --no-cache",
     "jest:watch": "npm run jest -- --watch",
     "lint": "./node_modules/.bin/eslint --ext .js,.jsx src",
@@ -26,6 +26,8 @@
     "react-dom": "^15.4.1",
     "react-helmet": "^4.0.0",
     "react-router": "4.0.0-alpha.6",
+    "webpack": "^2.2.1",
+    "webpack-dev-middleware": "^1.10.1",
     "webpack-hot-middleware": "^2.14.0"
   },
   "devDependencies": {
@@ -58,7 +60,6 @@
     "style-loader": "^0.13.1",
     "uglify-js": "^2.7.5",
     "url-loader": "^0.5.7",
-    "webpack": "^2.2.1",
     "webpack-dev-server": "^2.3.0"
   },
   "jest": {
