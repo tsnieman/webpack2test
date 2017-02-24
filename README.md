@@ -32,15 +32,6 @@ By default, the app is configured to redirect all traffic to HTTPS. As such, you
 
 # Issues
 
-## Some stuff doesn't hot reload 'til 2nd re-build
-
-For example: the code-splitting happening [via `System.import`](https://github.com/tsnieman/webpack2test/blob/6be5a1e87e38e4c509f765a6ef92c0b3825cc7c8/src/components/app/RootRouter/RootRouter.jsx#L23) doesn't hot-reload.
-
-Found a github issue that seems to be tracking this:
-
-> "So to sum up, hot reloading system.imported code would only work on the second time the webpack builds."
-via  https://github.com/gaearon/react-hot-loader/issues/303#issuecomment-253836872
-
 ## Chrome warns of 'non-secure connection' when navigating to `https://localhost` (local https server)
 
 The cert is self-signed, just for this repo. Add the cert to Chrome: [http://stackoverflow.com/a/15076602](http://stackoverflow.com/a/15076602)

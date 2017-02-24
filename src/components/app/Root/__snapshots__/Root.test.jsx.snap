@@ -1,7 +1,0 @@
-exports[`test Root is tested 1`] = `
-<div>
-  <div>
-    RootRouter
-  </div>
-</div>
-`;
