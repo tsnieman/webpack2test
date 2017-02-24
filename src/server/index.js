@@ -70,10 +70,10 @@ app.get('*', (req, res) => {
 // ---------------------------
 app.listen(HTTP_PORT, (err) => {
   if (err) {
-    return console.error(err);
+    return console.error(err); // eslint-disable-line no-console
   }
 
-  return console.log(`Listening at http://localhost:${HTTP_PORT}`);
+  return console.log(`Listening at http://localhost:${HTTP_PORT}`); // eslint-disable-line no-console
 });
 
 // Launch https server.
@@ -88,9 +88,9 @@ spdy
   .createServer(sslOptions, app)
   .listen(HTTPS_PORT, (err) => {
     if (err) {
-      console.error(err);
+      console.error(err); // eslint-disable-line no-console
       return process.exit(1);
     }
 
-    return console.log(`Listening at https://localhost:${HTTPS_PORT}`);
+    return console.log(`Listening at https://localhost:${HTTPS_PORT}`); // eslint-disable-line no-console
   });
