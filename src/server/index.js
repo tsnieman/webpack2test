@@ -1,6 +1,6 @@
 const path = require('path');
 const fs = require('fs');
-const https = require('https');
+const spdy = require('spdy');
 
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -70,10 +70,10 @@ app.get('*', (req, res) => {
 // ---------------------------
 app.listen(HTTP_PORT, (err) => {
   if (err) {
-    return console.error(err);
+    return console.error(err); // eslint-disable-line no-console
   }
 
-  return console.log(`Listening at http://localhost:${HTTP_PORT}`);
+  return console.log(`Listening at http://localhost:${HTTP_PORT}`); // eslint-disable-line no-console
 });
 
 // Launch https server.
@@ -84,11 +84,13 @@ const sslOptions = {
   passphrase: process.env.SSL_CERT_PASS,
 };
 
-const httpsServer = https.createServer(sslOptions, app);
-httpsServer.listen(HTTPS_PORT, (err) => {
-  if (err) {
-    return console.error(err);
-  }
+spdy
+  .createServer(sslOptions, app)
+  .listen(HTTPS_PORT, (err) => {
+    if (err) {
+      console.error(err); // eslint-disable-line no-console
+      return process.exit(1);
+    }
 
-  return console.log(`Listening at https://localhost:${HTTPS_PORT}`);
-});
+    return console.log(`Listening at https://localhost:${HTTPS_PORT}`); // eslint-disable-line no-console
+  });
