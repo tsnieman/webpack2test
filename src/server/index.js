@@ -1,6 +1,7 @@
 const path = require('path');
 const fs = require('fs');
 const spdy = require('spdy');
+const http = require('http');
 
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -68,13 +69,15 @@ app.get('*', (req, res) => {
 
 // Launch http server.
 // ---------------------------
-app.listen(HTTP_PORT, (err) => {
-  if (err) {
-    return console.error(err); // eslint-disable-line no-console
-  }
+http
+  .createServer(app)
+  .listen(HTTP_PORT, (err) => {
+    if (err) {
+      return console.error(err); // eslint-disable-line no-console
+    }
 
-  return console.log(`Listening at http://localhost:${HTTP_PORT}`); // eslint-disable-line no-console
-});
+    return console.log(`Listening at http://localhost:${HTTP_PORT}`); // eslint-disable-line no-console
+  });
 
 // Launch https server.
 // ---------------------------
