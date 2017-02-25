@@ -5,8 +5,6 @@ const contextPath = path.resolve(__dirname, '..', 'src')
 
 // Webpack
 const webpack = require('webpack');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const PreloadWebpackPlugin = require('preload-webpack-plugin');
 
 module.exports = {
   // The 'base folder' for the app
@@ -17,7 +15,7 @@ module.exports = {
   entry: [
     'react-hot-loader/patch',
     'webpack-hot-middleware/client',
-    '../src/app.js',
+    '../src/index.js',
   ],
 
   // The bundle outputs
@@ -34,7 +32,7 @@ module.exports = {
     // it will bundle that into a commons.js
     new webpack.optimize.CommonsChunkPlugin({
       name: 'commons',
-      filename: 'commons.js',
+      filename: '[name].bundle.js',
       minChunks: 2,
     }),
 
@@ -42,23 +40,6 @@ module.exports = {
 
     // Recommended (NoErrorsPlugin is deprecated)
     new webpack.NoEmitOnErrorsPlugin(),
-
-    // Generate HTML to serve
-    new HtmlWebpackPlugin({
-      template: path.join(__dirname, '../src/index.html'),
-      filename: 'index.html',
-      inject: 'body',
-      favicon: path.join(__dirname, '..', 'public', 'images', 'favicon.ico'),
-    }),
-
-    // Preload
-    // https://github.com/googlechrome/preload-webpack-plugin
-    // (TODO learn to configure this sensibly lol)
-    new PreloadWebpackPlugin({
-      rel: 'preload',
-      as: 'script',
-      include: 'asyncChunks'
-    }),
   ],
 
   resolve: {

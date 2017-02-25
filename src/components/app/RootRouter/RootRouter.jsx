@@ -4,7 +4,7 @@ import React from 'react';
 import { BrowserRouter, Match, Miss } from 'react-router';
 
 // Declarative webpack code-splitting using Webpack 2 + System.import
-import LazilyLoad, { importLazy } from 'components/utility/LazilyLoad';
+import LazilyLoad, { importLazy } from '../../utility/LazilyLoad';
 
 import Header from 'components/app/Header';
 

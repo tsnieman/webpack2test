@@ -1,12 +1,13 @@
 import React from 'react';
 
-import RootRouter from 'components/app/RootRouter';
 import Helmet from 'react-helmet';
+import RootRouter from '../RootRouter';
+
 import {
   PLAINTEXT_NAME,
   DEFAULT_TITLE,
   DEFAULT_DESCRIPTION,
-} from 'constants/app';
+} from '../../../constants/app';
 
 const Root = () => (
   <div>
