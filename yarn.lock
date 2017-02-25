@@ -4564,9 +4564,9 @@ pre-commit@^1.2.2:
     spawn-sync "^1.0.15"
     which "1.2.x"
 
-preload-webpack-plugin@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/preload-webpack-plugin/-/preload-webpack-plugin-1.1.0.tgz#35e41e9297141adb15b45b9a4ba9c8711f1bcd11"
+preload-webpack-plugin@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/preload-webpack-plugin/-/preload-webpack-plugin-1.2.0.tgz#d8581794133aaa275307c1c975050bc550b13059"
   dependencies:
     object-assign "^4.1.1"
 
