@@ -1,8 +1,11 @@
-exports[`test Button is tested 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button is tested 1`] = `
 <button
   className="components-base-Button-__Button__button-default__3qwt0 components-base-Button-__Button__button-base__2WRVG"
   disabled={false}
-  to={undefined}>
+  to={undefined}
+>
   
 </button>
 `;

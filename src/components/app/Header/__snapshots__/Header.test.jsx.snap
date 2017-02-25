@@ -1,4 +1,6 @@
-exports[`test Header is tested 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header is tested 1`] = `
 <header>
   <strong>
     🍞 webpack2test
@@ -10,7 +12,8 @@ exports[`test Header is tested 1`] = `
           className=""
           href="/"
           onClick={[Function]}
-          style={Object {}}>
+          style={Object {}}
+        >
           /home
         </a>
       </li>
@@ -19,7 +22,8 @@ exports[`test Header is tested 1`] = `
           className=""
           href="/about"
           onClick={[Function]}
-          style={Object {}}>
+          style={Object {}}
+        >
           /about
         </a>
       </li>
@@ -28,7 +32,8 @@ exports[`test Header is tested 1`] = `
           className=""
           href="/404-fake-route"
           onClick={[Function]}
-          style={Object {}}>
+          style={Object {}}
+        >
           /404-fake-route
         </a>
       </li>
