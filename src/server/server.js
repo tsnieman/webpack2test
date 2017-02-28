@@ -11,6 +11,14 @@ import webpack from 'webpack';
 import webpackConfig from '../../config/webpack.config';
 
 import {
+  createIsomorphicWebpack,
+} from 'isomorphic-webpack';
+
+import {
+  renderToString,
+} from 'react-dom/server';
+
+import {
   HTTP_PORT,
   HTTPS_PORT,
 } from '../constants/server';
@@ -28,6 +36,19 @@ const compiler = webpack(webpackConfig);
 // --------------
 const app = express();
 
+// createIsomorphicWebpack(webpackConfig);
+// console.log(createIsomorphicWebpack(webpackConfig));
+// console.log(Object.keys(createIsomorphicWebpack(webpackConfig)));
+const {
+  // compiler,
+  evalBundleCode,
+  // compilerCallback,
+
+  createCompilationPromise,
+  // TODO ^^^ "Do not use this in production. This implementation has a large overhead"
+  // TODO via https://github.com/gajus/isomorphic-webpack#isomorphic-webpack-faq-how-to-delay-request-handling-while-compilation-is-in-progress
+} = createIsomorphicWebpack(webpackConfig, { useCompilationPromise: true });
+
 // Make sure the body is parsed before everything else (via https://github.com/analog-nico/hpp#getting-started)
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -43,6 +64,13 @@ app.use(compressionMiddleware());
 // Redirect to HTTPS
 app.all('*', httpsEverywhereMiddleware); // keep at top of routing calls
 
+// Compile for server (via isomorphic-webpack)
+app.use(async (req, res, next) => {
+  await createCompilationPromise();
+
+  next();
+});
+
 if (process.env.NODE_ENV === 'development') {
   // Dev middleware
   app.use(webpackDevMiddleware(compiler, {
@@ -51,6 +79,8 @@ if (process.env.NODE_ENV === 'development') {
     publicPath: webpackConfig.output.publicPath, // where bundles live
 
     historyApiFallback: true,
+
+    hot: true,
 
     stats: {
       colors: true,
@@ -66,7 +96,11 @@ if (process.env.NODE_ENV === 'development') {
   app.use('/public', express.static('public/built'));
 }
 
-app.use((req, res) => {
+app.get('*', (req, res) => {
+  const requestUrl = req.protocol + '://' + req.get('host') + req.originalUrl;
+
+  const appBody = renderToString(evalBundleCode(requestUrl).default);
+
   const assetsByChunkName = res.locals.webpackStats.toJson().assetsByChunkName;
 
   res.send(`
@@ -74,6 +108,12 @@ app.use((req, res) => {
   <head>
     <meta name=viewport content="width=device-width, initial-scale=1" />
     <title>Sample App</title>
+    <script>
+      /* TODO investigate how to pass initial state */
+      window.INTIAL_STATE = {
+        location: '/',
+      };
+    </script>
 
     ${
       Object.keys(assetsByChunkName)
@@ -89,19 +129,15 @@ app.use((req, res) => {
     }
   </head>
   <body>
-    <div id="app-index"></div>
-
-    <script src="${webpackConfig.output.publicPath + 'commons.bundle.js'}"></script>
+    <div id="app-index">${appBody}</div>
 
     ${
       Object.keys(assetsByChunkName)
         .map((name) => {
-          if (assetsByChunkName[name] !== 'commons.bundle.js') { // TODO commons.bundle.js must come first, is handled manually.
-            const chunkPath = webpackConfig.output.publicPath + assetsByChunkName[name];
+          const chunkPath = webpackConfig.output.publicPath + assetsByChunkName[name];
 
-            if (chunkPath.endsWith('.js')) {
-              return `<script src="${chunkPath}"></script>`;
-            }
+          if (chunkPath.endsWith('.js')) {
+            return `<script src="${chunkPath}"></script>`;
           }
 
           return '';

@@ -12,6 +12,7 @@ Made this to test Webpack 2. It's a little React app. It's not the most minimal 
 - PostCSS
 - Jest
 - ESLint (w/ AirBnB config)
+- Isomorphic Webpack
 
 # Using the local https server
 
@@ -28,7 +29,8 @@ By default, the app is configured to redirect all traffic to HTTPS. As such, you
 | key           | values | description                                          |
 |---------------|------------------------------------------------------|-----|
 | SSL_CERT_PASS | n/a | The password for the localhost https server's certs. |
-| NODE_ENV | `production` `test` `development` | Stuff |
+| NODE_ENV | `production` `test` `development` | Node environment variable. |
+| DEBUG | `express:application` `isomorphic-webpack` | Extra debugging noise. |
 
 # Issues
 

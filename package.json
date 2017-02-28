@@ -4,7 +4,7 @@
   "scripts": {
     "clean": "rm -rf ./public/built",
     "build:dev": "npm run clean && webpack --config config/webpack.config.js",
-    "start:dev": "npm run build:dev && NODE_ENV=development ./node_modules/.bin/nodemon --exec ./node_modules/.bin/babel-node ./src/server/index.js --presets es2015,stage-2,react",
+    "start:dev": "npm run build:dev && NODE_ENV=development ./node_modules/.bin/nodemon --exec ./node_modules/.bin/babel-node ./src/server/index.js --presets es2015,stage-0,react",
     "build:prod": "npm run clean && webpack -p --config config/webpack.config.js",
     "start:prod": "export NODE_ENV=production && npm run build:prod && NODE_ENV=production node ./src/server/index.js",
     "jest": "NODE_ENV=test BABEL_DISABLE_CACHE=1 ./node_modules/.bin/jest --no-cache",

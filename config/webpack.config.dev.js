@@ -1,7 +1,7 @@
 'use strict';
 
 const path = require('path');
-const contextPath = path.resolve(__dirname, '..', 'src')
+const contextPath = path.resolve(__dirname, '../src')
 
 // Webpack
 const webpack = require('webpack');
@@ -12,16 +12,18 @@ module.exports = {
 
   // The entry point for different bundles
   // i.e. where the app "begins"/inits.
-  entry: [
-    'react-hot-loader/patch',
-    'webpack-hot-middleware/client',
-    '../src/index.js',
-  ],
+  entry: {
+    app: [
+      'react-hot-loader/patch',
+      'webpack-hot-middleware/client',
+      path.resolve(contextPath, 'index.jsx')
+    ]
+  },
 
   // The bundle outputs
   output: {
-    path: path.resolve(__dirname, '..', 'public', 'built'),
-    filename: '[name].bundle.js',
+    path: path.resolve(__dirname, '../public/built'),
+    filename: '[name].js',
     publicPath: '/public/', // as it will be served
     chunkFilename: '[name]-[chunkhash].js',
   },
@@ -30,25 +32,25 @@ module.exports = {
     // COMMON CHUNKS
     // any modules that get loaded ${minChunks} or more times,
     // it will bundle that into a commons.js
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'commons',
-      filename: '[name].bundle.js',
-      minChunks: 2,
-    }),
+    //new webpack.optimize.CommonsChunkPlugin({
+      //name: 'commons',
+      //filename: '[name].js',
+      //minChunks: 2,
+    //}),
 
-    new webpack.HotModuleReplacementPlugin(),
+    // new webpack.HotModuleReplacementPlugin(),
 
     // Recommended (NoErrorsPlugin is deprecated)
-    new webpack.NoEmitOnErrorsPlugin(),
+    // new webpack.NoEmitOnErrorsPlugin(),
   ],
 
   resolve: {
     // Where to look for modules (i.e. for importing/requiring)
     modules: [
       'node_modules',
-      path.resolve(__dirname, '..', 'src'),
-      path.resolve(__dirname, '..', 'config'),
-      path.resolve(__dirname, '..', 'public'),
+      path.resolve(__dirname, '../src'),
+      path.resolve(__dirname, '../config'),
+      path.resolve(__dirname, '../public'),
     ],
 
     // Seems to resolve a "Can't resolve './Header'" (i.e. index) error from webpack

@@ -1,7 +1,7 @@
 import React from 'react';
 
 // Routing
-import { BrowserRouter, Match, Miss } from 'react-router';
+import { StaticRouter, Match, Miss } from 'react-router';
 
 // Declarative webpack code-splitting using Webpack 2 + System.import
 import LazilyLoad, { importLazy } from '../../utility/LazilyLoad';
@@ -9,7 +9,7 @@ import LazilyLoad, { importLazy } from '../../utility/LazilyLoad';
 import Header from 'components/app/Header';
 
 const RootRouter = () => (
-  <BrowserRouter>
+  <StaticRouter location={'/'}>
     <div>
       <Header />
 
@@ -17,17 +17,8 @@ const RootRouter = () => (
         <Match
           exactly
           pattern="/"
-          render={props => (
-            <LazilyLoad
-              modules={{
-                // TODO remove "System." (only keeping for eslint rn)
-                HomePage: () => importLazy(System.import('../../pages/Home')),
-              }}
-            >
-              {({ HomePage }) => (
-                <HomePage {...props} />
-              )}
-            </LazilyLoad>
+          render={() => (
+            <div>Home!</div>
           )}
         />
 
@@ -64,7 +55,7 @@ const RootRouter = () => (
         />
       </div>
     </div>
-  </BrowserRouter>
+  </StaticRouter>
 );
 
 RootRouter.propTypes = {
