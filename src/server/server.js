@@ -99,7 +99,12 @@ if (process.env.NODE_ENV === 'development') {
 app.get('*', (req, res) => {
   const requestUrl = req.protocol + '://' + req.get('host') + req.originalUrl;
 
-  const appBody = renderToString(evalBundleCode(requestUrl).default);
+  const clientOptions = {
+    initialLocation: req.path,
+  };
+
+  const theClient = evalBundleCode(requestUrl).default(clientOptions);
+  const appBody = renderToString(theClient);
 
   const assetsByChunkName = res.locals.webpackStats.toJson().assetsByChunkName;
 
@@ -108,12 +113,7 @@ app.get('*', (req, res) => {
   <head>
     <meta name=viewport content="width=device-width, initial-scale=1" />
     <title>Sample App</title>
-    <script>
-      /* TODO investigate how to pass initial state */
-      window.INTIAL_STATE = {
-        location: '/',
-      };
-    </script>
+    <link rel="shortcut icon" type="image/png" href="/public/images/favicon.png"/>
 
     ${
       Object.keys(assetsByChunkName)

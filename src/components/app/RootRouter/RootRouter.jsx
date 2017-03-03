@@ -8,8 +8,8 @@ import LazilyLoad, { importLazy } from '../../utility/LazilyLoad';
 
 import Header from 'components/app/Header';
 
-const RootRouter = () => (
-  <StaticRouter location={'/'}>
+const RootRouter = ({ initialLocation }) => (
+  <StaticRouter location={initialLocation}>
     <div>
       <Header />
 
@@ -59,6 +59,11 @@ const RootRouter = () => (
 );
 
 RootRouter.propTypes = {
+  initialLocation: React.PropTypes.string,
+};
+
+RootRouter.defaultProps = {
+  initialLocation: '/',
 };
 
 export default RootRouter;

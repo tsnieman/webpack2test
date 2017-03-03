@@ -9,7 +9,7 @@ import {
   DEFAULT_DESCRIPTION,
 } from '../../../constants/app';
 
-const Root = () => (
+const Root = ({ initialLocation }) => (
   <div>
     <Helmet
       htmlAttributes={{
@@ -61,12 +61,17 @@ const Root = () => (
     {(process.env.NODE_ENV === 'test') ? (
       <div>RootRouter</div>
     ) : (
-      <RootRouter />
+      <RootRouter initialLocation={initialLocation} />
     )}
   </div>
 );
 
 Root.propTypes = {
+  initialLocation: React.PropTypes.string,
+};
+
+Root.defaultProps = {
+  initialLocation: '/',
 };
 
 export default Root;

@@ -5,13 +5,20 @@ import ReactDOM from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
 import Root from './components/app/Root';
 
-const app = (
+const app = ({ initialLocation }) => (
   <AppContainer>
-    <Root />
+    <Root initialLocation={initialLocation} />
   </AppContainer>
 );
 
-console.log('ISOMORPHIC_WEBPACK', typeof ISOMORPHIC_WEBPACK);
+app.propTypes = {
+  initialLocation: React.PropTypes.string,
+};
+
+app.defaultProps = {
+  initialLocation: '/',
+};
+
 if (typeof ISOMORPHIC_WEBPACK === 'undefined') {
   const rootEl = document.getElementById('app-index');
   ReactDOM.render(app, rootEl);
