@@ -36,6 +36,21 @@ const compiler = webpack(webpackConfig);
 // --------------
 const app = express();
 
+// Isomorphic-specific webpack config.
+const isomorphicWebpackConfiguration = {
+  useCompilationPromise: true,
+  /*
+  nodeExternalsWhitelist: [
+  /^react\-router/,
+  /^history/,
+  /^postcss\-loader/,
+  /^style\-loader/,
+  /^css\-loader/,
+  /^babel-plugin-react-css-modules/
+  ],
+  */
+};
+
 // createIsomorphicWebpack(webpackConfig);
 // console.log(createIsomorphicWebpack(webpackConfig));
 // console.log(Object.keys(createIsomorphicWebpack(webpackConfig)));
@@ -47,7 +62,7 @@ const {
   createCompilationPromise,
   // TODO ^^^ "Do not use this in production. This implementation has a large overhead"
   // TODO via https://github.com/gajus/isomorphic-webpack#isomorphic-webpack-faq-how-to-delay-request-handling-while-compilation-is-in-progress
-} = createIsomorphicWebpack(webpackConfig, { useCompilationPromise: true });
+} = createIsomorphicWebpack(webpackConfig, isomorphicWebpackConfiguration);
 
 // Make sure the body is parsed before everything else (via https://github.com/analog-nico/hpp#getting-started)
 app.use(bodyParser.urlencoded({ extended: true }));

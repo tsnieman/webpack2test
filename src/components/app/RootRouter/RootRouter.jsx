@@ -7,6 +7,7 @@ import { StaticRouter, Match, Miss } from 'react-router';
 import LazilyLoad, { importLazy } from '../../utility/LazilyLoad';
 
 import Header from 'components/app/Header';
+import Home from '../../pages/Home';
 
 const RootRouter = ({ initialLocation }) => (
   <StaticRouter location={initialLocation}>
@@ -17,8 +18,8 @@ const RootRouter = ({ initialLocation }) => (
         <Match
           exactly
           pattern="/"
-          render={() => (
-            <div>Home!</div>
+          component={() => (
+            <Home />
           )}
         />
 

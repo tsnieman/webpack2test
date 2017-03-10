@@ -1,23 +1,15 @@
 import React from 'react';
-import './Home.css';
-
-import Button from 'components/base/Button';
-import Helmet from 'react-helmet';
+import styles from './Home.css';
 
 import reactImage from 'images/reactjs.png';
 
+console.log('##########');
+console.log('##########');
+console.log('##########');
+console.log({ styles });
 const Home = () => (
-  <div styleName="wrapper">
-    <Helmet
-      title="Home"
-    />
-
+  <div>
     <h1>Home page!</h1>
-
-    <div>
-      <Button variant="positive">Hello</Button>
-    </div>
-
     <img
       src={reactImage}
       alt="react js logo"
