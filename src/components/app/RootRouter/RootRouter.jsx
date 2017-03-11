@@ -1,61 +1,61 @@
 import React from 'react';
 
 // Routing
-import { StaticRouter, Match, Miss } from 'react-router';
+import {
+  Route,
+  StaticRouter as Router,
+  Switch,
+} from 'react-router-dom';
 
 // Declarative webpack code-splitting using Webpack 2 + System.import
-import LazilyLoad, { importLazy } from '../../utility/LazilyLoad';
+// import LazilyLoad, { importLazy } from '../../utility/LazilyLoad';
 
 import Header from 'components/app/Header';
+// import Home from 'components/pages/Home';
 
 const RootRouter = ({ initialLocation }) => (
-  <StaticRouter location={initialLocation}>
+  <Router location={initialLocation} context={{}}>
     <div>
       <Header />
 
       <div>
-        <Match
-          exactly
-          pattern="/"
-          render={() => (
-            <div>Home!</div>
-          )}
-        />
+        <Switch>
+          {/* A <Switch> renders the first child <Route> that matches.
+            A <Route> with no path always matches. */}
+          <Route
+            exact
+            path="/"
+            render={() => (
+              <div>
+                Home page
+                {/*
+                  <Home />
+                */}
+              </div>
+            )}
+          />
 
-        <Match
-          exactly
-          pattern="/about"
-          render={props => (
-            <LazilyLoad
-              modules={{
-                // TODO remove "System." (only keeping for eslint rn)
-                AboutPage: () => importLazy(System.import('../../pages/About')),
-              }}
-            >
-              {({ AboutPage }) => (
-                <AboutPage {...props} />
-              )}
-            </LazilyLoad>
-          )}
-        />
+          <Route
+            exact
+            path="/about"
+            render={() => (
+              <div>
+                About page
+              </div>
+            )}
+          />
 
-        <Miss
-          render={props => (
-            <LazilyLoad
-              modules={{
-                // TODO remove "System." (only keeping for eslint rn)
-                HTTP404Page: () => importLazy(System.import('../../pages/HTTP404')),
-              }}
-            >
-              {({ HTTP404Page }) => (
-                <HTTP404Page {...props} />
-              )}
-            </LazilyLoad>
-          )}
-        />
+          <Route
+            render={() => (
+              <div>
+                404 page
+              </div>
+            )}
+          />
+        </Switch>
       </div>
     </div>
-  </StaticRouter>
+  </Router>
 );
 
 RootRouter.propTypes = {
