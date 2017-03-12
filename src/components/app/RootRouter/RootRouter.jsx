@@ -11,7 +11,7 @@ import {
 // import LazilyLoad, { importLazy } from '../../utility/LazilyLoad';
 
 import Header from 'components/app/Header';
-// import Home from 'components/pages/Home';
+import Home from 'components/pages/Home';
 
 const RootRouter = ({ initialLocation }) => (
   <Router location={initialLocation} context={{}}>
@@ -28,9 +28,8 @@ const RootRouter = ({ initialLocation }) => (
             render={() => (
               <div>
                 Home page
-                {/*
-                  <Home />
-                */}
+
+                <Home />
               </div>
             )}
           />

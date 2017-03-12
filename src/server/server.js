@@ -59,6 +59,7 @@ const isomorphicWebpackConfiguration = {
 const {
   // compiler,
   evalBundleCode,
+  formatErrorStack,
   // compilerCallback,
 
   createCompilationPromise,
@@ -84,6 +85,15 @@ app.all('*', httpsEverywhereMiddleware); // keep at top of routing calls
 // Compile for server (via isomorphic-webpack)
 app.use(async (req, res, next) => {
   await createCompilationPromise();
+
+  next();
+});
+
+app.use((err, req, res, next) => {
+  console.log({ err, req, res });
+
+  // TODO Does this go here?
+  console.error(formatErrorStack(err.stack));
 
   next();
 });
