@@ -18,6 +18,8 @@ import {
   renderToString,
 } from 'react-dom/server';
 
+import Helmet from 'react-helmet';
+
 import {
   HTTP_PORT,
   HTTPS_PORT,
@@ -121,14 +123,21 @@ app.get('*', (req, res) => {
   const theClient = evalBundleCode(requestUrl).default(clientOptions);
   const appBody = renderToString(theClient);
 
+  // "you have to make sure to call rewind on server, or you'll get a memory leak."
+  // https://github.com/nfl/react-helmet#server-usage
+  const head = Helmet.rewind();
+
   const assetsByChunkName = res.locals.webpackStats.toJson().assetsByChunkName;
 
   res.send(`
 <html>
-  <head>
+  <head ${head.htmlAttributes.toString()}>
     <meta name=viewport content="width=device-width, initial-scale=1" />
-    <title>Sample App</title>
     <link rel="shortcut icon" type="image/png" href="/public/images/favicon.png"/>
+    ${head.title.toString()}
+    ${head.meta.toString()}
+    ${head.link.toString()}
+    ${head.base.toString()}
 
     ${
       Object.keys(assetsByChunkName)
