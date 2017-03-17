@@ -3,18 +3,15 @@
 exports[`Header is tested 1`] = `
 <header>
   <strong>
-    🍞 webpack2test
+    <a
+      href="/"
+      onClick={[Function]}
+    >
+      🍞 webpack2test
+    </a>
   </strong>
   <nav>
     <ul>
-      <li>
-        <a
-          href="/"
-          onClick={[Function]}
-        >
-          /home
-        </a>
-      </li>
       <li>
         <a
           href="/about"

@@ -1,6 +1,7 @@
 /* eslint-disable prefer-template */
 
 import fs from 'fs';
+import path from 'path';
 import spdy from 'spdy';
 import http from 'http';
 
@@ -26,7 +27,7 @@ import {
 } from '../constants/server';
 
 import webpackDevMiddleware from 'webpack-dev-middleware';
-import webpackHotMiddleware from 'webpack-hot-middleware';
+// import webpackHotMiddleware from 'webpack-hot-middleware';
 import httpsEverywhereMiddleware from './middleware/httpsEverywhere';
 import securityMiddlewares from './middleware/security';
 import compressionMiddleware from 'compression';
@@ -90,10 +91,10 @@ app.use(async (req, res, next) => {
 });
 
 app.use((err, req, res, next) => {
-  console.log({ err, req, res });
+  console.log({ err, req, res }); // eslint-disable-line no-console
 
   // TODO Does this go here?
-  console.error(formatErrorStack(err.stack));
+  console.error(formatErrorStack(err.stack)); // eslint-disable-line no-console
 
   next();
 });
@@ -107,7 +108,7 @@ if (process.env.NODE_ENV === 'development') {
 
     historyApiFallback: true,
 
-    hot: true,
+    // hot: true,
 
     stats: {
       colors: true,
@@ -118,10 +119,17 @@ if (process.env.NODE_ENV === 'development') {
     },
   }));
 
-  app.use(webpackHotMiddleware(compiler));
+  // app.use(webpackHotMiddleware(compiler));
 } else {
-  app.use('/public', express.static('public/built'));
+  // Webpack public path (aka webpack build location)
+  app.use(webpackConfig.output.publicPath, express.static(path.join(__dirname, '/../../public/built')));
 }
+
+// General image access, nothing fancy.
+app.use('/public/images', express.static(path.join(__dirname, '/../../public/images')));
+
+// TODO get some favicon middleware. there's like a billion favicons these days, holy cow.
+app.use('/public/images/favicon.png', express.static(path.join(__dirname, '/../../public/images/reactjs.png')));
 
 app.get('*', (req, res) => {
   const requestUrl = req.protocol + '://' + req.get('host') + req.originalUrl;

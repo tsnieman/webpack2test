@@ -23,7 +23,6 @@ const Root = ({ initialLocation }) => (
         lang: 'en',
       }}
       base={{
-        target: '_blank',
         href: '/',
       }}
       meta={[
@@ -71,7 +70,7 @@ Root.propTypes = {
 };
 
 Root.defaultProps = {
-  initialLocation: '/',
+  initialLocation: document.pathname,
 };
 
 export default Root;

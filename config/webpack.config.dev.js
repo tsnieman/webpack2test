@@ -14,8 +14,8 @@ module.exports = {
   // i.e. where the app "begins"/inits.
   entry: {
     app: [
-      'react-hot-loader/patch',
-      'webpack-hot-middleware/client',
+      //'react-hot-loader/patch',
+      //'webpack-hot-middleware/client',
       path.resolve(contextPath, 'index.jsx')
     ]
   },
@@ -24,11 +24,12 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, '../public/built'),
     filename: '[name].js',
-    publicPath: '/public/', // as it will be served
+    publicPath: '/public/built/', // as it will be served
     chunkFilename: '[name]-[chunkhash].js',
   },
 
   plugins: [
+    // TODO Common chunks + isomorphic-webpack = weird exports error
     // COMMON CHUNKS
     // any modules that get loaded ${minChunks} or more times,
     // it will bundle that into a commons.js
@@ -41,7 +42,7 @@ module.exports = {
     // new webpack.HotModuleReplacementPlugin(),
 
     // Recommended (NoErrorsPlugin is deprecated)
-    // new webpack.NoEmitOnErrorsPlugin(),
+    new webpack.NoEmitOnErrorsPlugin(),
   ],
 
   resolve: {

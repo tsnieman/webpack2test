@@ -21,10 +21,11 @@ app.defaultProps = {
 
 if (typeof ISOMORPHIC_WEBPACK === 'undefined') {
   const rootEl = document.getElementById('app-index');
-  ReactDOM.render(app, rootEl);
+  ReactDOM.render(app({ initialLocation: document.pathname }), rootEl);
 
   // TODO RHL3 for isomorphic setup we use now...
   // console.log({ module: module, mhot: module.hot });
+  /*
   if (module.hot) {
     module.hot.accept('./components/app/Root', () => {
       // If you use Webpack 2 in ES modules mode, you can
@@ -40,6 +41,7 @@ if (typeof ISOMORPHIC_WEBPACK === 'undefined') {
       );
     });
   }
+  */
 }
 
 export default app;

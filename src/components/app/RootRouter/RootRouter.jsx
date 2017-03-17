@@ -3,15 +3,23 @@ import React from 'react';
 // Routing
 import {
   Route,
-  StaticRouter as Router,
   Switch,
 } from 'react-router-dom';
+
+let Router;
+if (typeof ISOMORPHIC_WEBPACK === 'undefined') {
+  Router = require('react-router-dom').BrowserRouter; // eslint-disable-line global-require
+} else {
+  Router = require('react-router-dom').StaticRouter; // eslint-disable-line global-require
+}
 
 // Declarative webpack code-splitting using Webpack 2 + System.import
 // import LazilyLoad, { importLazy } from '../../utility/LazilyLoad';
 
 import Header from 'components/app/Header';
-import Home from 'components/pages/Home';
+import HomePage from 'components/pages/Home';
+import AboutPage from 'components/pages/About';
+import HTTP404Page from 'components/pages/HTTP404';
 
 const RootRouter = ({ initialLocation }) => (
   <Router location={initialLocation} context={{}}>
@@ -26,11 +34,7 @@ const RootRouter = ({ initialLocation }) => (
             exact
             path="/"
             render={() => (
-              <div>
-                Home page
-
-                <Home />
-              </div>
+              <HomePage />
             )}
           />
 
@@ -38,17 +42,13 @@ const RootRouter = ({ initialLocation }) => (
             exact
             path="/about"
             render={() => (
-              <div>
-                About page
-              </div>
+              <AboutPage />
             )}
           />
 
           <Route
             render={() => (
-              <div>
-                404 page
-              </div>
+              <HTTP404Page />
             )}
           />
         </Switch>
@@ -62,7 +62,7 @@ RootRouter.propTypes = {
 };
 
 RootRouter.defaultProps = {
-  initialLocation: '/',
+  initialLocation: document.pathname,
 };
 
 export default RootRouter;
