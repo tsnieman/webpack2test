@@ -61,7 +61,7 @@
     "pre-commit": "^1.2.2",
     "react-hot-loader": "^3.0.0-beta.6",
     "react-test-renderer": "^15.4.1",
-    "style-loader": "^0.14.1",
+    "style-loader": "0.13.1",
     "uglify-js": "^2.8.12",
     "url-loader": "^0.5.8"
   },
