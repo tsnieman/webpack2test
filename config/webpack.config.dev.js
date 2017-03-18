@@ -3,7 +3,6 @@
 const path = require('path');
 const contextPath = path.resolve(__dirname, '../src')
 
-// Webpack
 const webpack = require('webpack');
 
 module.exports = {
@@ -16,7 +15,7 @@ module.exports = {
     app: [
       //'react-hot-loader/patch',
       //'webpack-hot-middleware/client',
-      path.resolve(contextPath, 'index.jsx')
+      path.resolve(__dirname, '../src/index.jsx')
     ]
   },
 
