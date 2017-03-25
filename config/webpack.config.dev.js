@@ -28,6 +28,11 @@ module.exports = {
   },
 
   plugins: [
+    // new webpack.HotModuleReplacementPlugin(),
+
+    // Recommended (NoErrorsPlugin is deprecated)
+    new webpack.NoEmitOnErrorsPlugin(),
+
     // TODO Common chunks + isomorphic-webpack = weird exports error
     // COMMON CHUNKS
     // any modules that get loaded ${minChunks} or more times,
@@ -36,12 +41,11 @@ module.exports = {
       //name: 'commons',
       //filename: '[name].js',
       //minChunks: 2,
+      //async: true,
+      //children: true,
     //}),
 
-    // new webpack.HotModuleReplacementPlugin(),
-
-    // Recommended (NoErrorsPlugin is deprecated)
-    new webpack.NoEmitOnErrorsPlugin(),
+    // TODO use https://medium.com/webpack/webpack-bits-getting-the-most-out-of-the-commonschunkplugin-ab389e5f318#.bl0jid69f
   ],
 
   resolve: {
