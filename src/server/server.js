@@ -1,7 +1,7 @@
 /* eslint-disable prefer-template */
 
 import path from 'path';
-import spdy from 'spdy';
+import http from 'http';
 
 import express from 'express';
 import bodyParser from 'body-parser';
@@ -75,7 +75,7 @@ app.get('*', (req, res) => {
 
 // Launch http server.
 // ---------------------------
-spdy
+http
   .createServer(app)
   .listen(HTTP_PORT, (err) => {
     if (err) {

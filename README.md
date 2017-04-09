@@ -13,7 +13,6 @@ Made this to test Webpack 2. It's a little React app. It's not the most minimal 
 - Jest
 - ESLint (w/ AirBnB config)
 - Isomorphic Webpack
-- HTTP2 (SPDY)
 
 # Environment variables
 
