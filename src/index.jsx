@@ -1,30 +1,25 @@
+// Kick off the client-side app.
 /* eslint-disable global-require, import/no-extraneous-dependencies */
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Root from 'components/app/Root';
 import { AppContainer } from 'react-hot-loader';
+import Root from './components/app/Root';
 
 const rootEl = document.getElementById('app-index');
 
-ReactDOM.render(
-  <AppContainer>
-    <Root />
-  </AppContainer>,
-  rootEl,
-);
+const renderApp = () => {
+  ReactDOM.render(
+    <AppContainer>
+      <Root />
+    </AppContainer>,
+
+    // DOM element mounted to
+    rootEl,
+  );
+};
 
 if (module.hot) {
-  module.hot.accept('./components/app/Root', () => {
-    // If you use Webpack 2 in ES modules mode, you can
-    // use <Root /> here rather than require() a <NextRoot />.
-    // TODO pretty sure I have "ES modules mode" enabled,
-    // but just re-using Root doesn't seem to work. Sup?
-    const NextRoot = require('./components/app/Root').default;
-    ReactDOM.render(
-      <AppContainer>
-        <NextRoot />
-      </AppContainer>,
-      rootEl,
-    );
-  });
+  module.hot.accept('./components/app/Root', () => renderApp());
 }
+
+renderApp();

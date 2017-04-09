@@ -1,12 +1,11 @@
 'use strict';
 
 const path = require('path');
-const contextPath = path.resolve(__dirname, '..', 'src')
+const contextPath = path.resolve(__dirname, '../src')
 
-// Webpack
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const PreloadWebpackPlugin = require('preload-webpack-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 module.exports = {
   // The 'base folder' for the app
@@ -14,34 +13,52 @@ module.exports = {
 
   // The entry point for different bundles
   // i.e. where the app "begins"/inits.
-  entry: [
-    'react-hot-loader/patch',
-    'webpack-hot-middleware/client',
-    '../src/app.js',
-  ],
+  entry: {
+    vendor: [
+      'lodash',
+      'react',
+      'react-dom',
+      'react-router-dom',
+      'react-helmet',
+    ],
+
+    app: [
+      'react-hot-loader/patch',
+      'webpack-hot-middleware/client',
+      path.resolve(__dirname, '../src/index.jsx')
+    ]
+  },
 
   // The bundle outputs
   output: {
-    path: path.resolve(__dirname, '..', 'public', 'built'),
+    path: path.resolve(__dirname, '../public/built'),
     filename: '[name].bundle.js',
-    publicPath: '/public/', // as it will be served
+    publicPath: '/public/built/', // as it will be served
     chunkFilename: '[name]-[chunkhash].js',
   },
 
   plugins: [
-    // COMMON CHUNKS
-    // any modules that get loaded ${minChunks} or more times,
-    // it will bundle that into a commons.js
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'commons',
-      filename: 'commons.js',
-      minChunks: 2,
-    }),
-
     new webpack.HotModuleReplacementPlugin(),
 
     // Recommended (NoErrorsPlugin is deprecated)
     new webpack.NoEmitOnErrorsPlugin(),
+
+    // COMMON CHUNKS
+    // any modules that get loaded ${minChunks} or more times,
+    // it will bundle that into a commons.js
+    // TODO use https://medium.com/webpack/webpack-bits-getting-the-most-out-of-the-commonschunkplugin-ab389e5f318#.bl0jid69f
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'commons',
+      filename: 'commons.bundle.js',
+      minChunks: 2,
+    }),
+
+    // TODO Not sure why "async" can't be used in the other CommonsChunkPlugin block...?
+    // Related..? https://github.com/webpack/webpack/issues/1812#issuecomment-168078904
+    new webpack.optimize.CommonsChunkPlugin({
+      async: true,
+      children: true,
+    }),
 
     // Generate HTML to serve
     new HtmlWebpackPlugin({
@@ -49,25 +66,19 @@ module.exports = {
       filename: 'index.html',
       inject: 'body',
       favicon: path.join(__dirname, '..', 'public', 'images', 'favicon.ico'),
+      // chunks: ['commons', 'app'],
     }),
 
-    // Preload
-    // https://github.com/googlechrome/preload-webpack-plugin
-    // (TODO learn to configure this sensibly lol)
-    new PreloadWebpackPlugin({
-      rel: 'preload',
-      as: 'script',
-      include: 'asyncChunks'
-    }),
+    // new BundleAnalyzerPlugin(),
   ],
 
   resolve: {
     // Where to look for modules (i.e. for importing/requiring)
     modules: [
       'node_modules',
-      path.resolve(__dirname, '..', 'src'),
-      path.resolve(__dirname, '..', 'config'),
-      path.resolve(__dirname, '..', 'public'),
+      path.resolve(__dirname, '../src'),
+      path.resolve(__dirname, '../config'),
+      path.resolve(__dirname, '../public'),
     ],
 
     // Seems to resolve a "Can't resolve './Header'" (i.e. index) error from webpack
@@ -82,10 +93,12 @@ module.exports = {
         exclude: [
           /node_modules/,
         ],
-        use: [{
-          loader: 'babel-loader',
-          // options in .babelrc
-        }],
+          use: [
+            {
+              loader: 'babel-loader',
+              // options in .babelrc
+            },
+          ],
       },
 
       // CSS
@@ -127,13 +140,5 @@ module.exports = {
   },
 
   // Source maps
-  devtool: 'cheap-module-eval-source-map',
-
-  // Performance budgets
-  // https://medium.com/webpack/webpack-performance-budgets-13d4880fbf6d
-  performance: {
-    maxAssetSize: 100000, // in bytes (example: 10000 = 10kb)
-    maxEntrypointSize: 300000, // in bytes (example: 10000 = 10kb)
-    hints: 'warning'
-  },
+  devtool: 'eval',
 };

@@ -1,12 +1,20 @@
+/* eslint-disable import/no-webpack-loader-syntax */
+// ^ Didn't seem worth it to configure loaders to split pages.
+
 import React from 'react';
 
 // Routing
-import { BrowserRouter, Match, Miss } from 'react-router';
-
-// Declarative webpack code-splitting using Webpack 2 + System.import
-import LazilyLoad, { importLazy } from 'components/utility/LazilyLoad';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import Header from 'components/app/Header';
+import HTTP404Page from 'components/pages/HTTP404';
+
+// Declarative webpack code-splitting / component loading
+import Bundle from 'components/utility/Bundle';
+
+// Lazy-loading / code-splitting via bundle-loader and Webpack 2
+const loadHome = require('bundle-loader?lazy&name=HomePage!../../pages/Home/Home.jsx');
+const loadAbout = require('bundle-loader?lazy&name=AboutPage!../../pages/About/About.jsx');
 
 const RootRouter = () => (
   <BrowserRouter>
@@ -14,60 +22,36 @@ const RootRouter = () => (
       <Header />
 
       <div>
-        <Match
-          exactly
-          pattern="/"
-          render={props => (
-            <LazilyLoad
-              modules={{
-                // TODO remove "System." (only keeping for eslint rn)
-                HomePage: () => importLazy(System.import('../../pages/Home')),
-              }}
-            >
-              {({ HomePage }) => (
-                <HomePage {...props} />
-              )}
-            </LazilyLoad>
-          )}
-        />
+        <Switch>
+          <Route
+            exact
+            path="/"
+            render={props => (
+              <Bundle load={loadHome}>
+                {Home => <Home {...props} />}
+              </Bundle>
+            )}
+          />
 
-        <Match
-          exactly
-          pattern="/about"
-          render={props => (
-            <LazilyLoad
-              modules={{
-                // TODO remove "System." (only keeping for eslint rn)
-                AboutPage: () => importLazy(System.import('../../pages/About')),
-              }}
-            >
-              {({ AboutPage }) => (
-                <AboutPage {...props} />
-              )}
-            </LazilyLoad>
-          )}
-        />
+          <Route
+            exact
+            path="/about"
+            render={props => (
+              <Bundle load={loadAbout}>
+                {About => <About {...props} />}
+              </Bundle>
+            )}
+          />
 
-        <Miss
-          render={props => (
-            <LazilyLoad
-              modules={{
-                // TODO remove "System." (only keeping for eslint rn)
-                HTTP404Page: () => importLazy(System.import('../../pages/HTTP404')),
-              }}
-            >
-              {({ HTTP404Page }) => (
-                <HTTP404Page {...props} />
-              )}
-            </LazilyLoad>
-          )}
-        />
+          <Route component={HTTP404Page} />
+        </Switch>
       </div>
     </div>
   </BrowserRouter>
 );
 
 RootRouter.propTypes = {
+  // PLACEHOLDER
 };
 
 export default RootRouter;

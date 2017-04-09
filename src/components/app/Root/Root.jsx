@@ -1,7 +1,8 @@
 import React from 'react';
 
-import RootRouter from 'components/app/RootRouter';
 import Helmet from 'react-helmet';
+import RootRouter from 'components/app/RootRouter';
+
 import {
   PLAINTEXT_NAME,
   DEFAULT_TITLE,
@@ -22,7 +23,6 @@ const Root = () => (
         lang: 'en',
       }}
       base={{
-        target: '_blank',
         href: '/',
       }}
       meta={[
@@ -66,6 +66,11 @@ const Root = () => (
 );
 
 Root.propTypes = {
+  // PLACEHOLDER
+};
+
+Root.defaultProps = {
+  // PLACEHOLDER
 };
 
 export default Root;

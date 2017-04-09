@@ -3,36 +3,27 @@
 exports[`Header is tested 1`] = `
 <header>
   <strong>
-    🍞 webpack2test
+    <a
+      href="/"
+      onClick={[Function]}
+    >
+      🍞 webpack2test
+    </a>
   </strong>
   <nav>
     <ul>
       <li>
         <a
-          className=""
-          href="/"
-          onClick={[Function]}
-          style={Object {}}
-        >
-          /home
-        </a>
-      </li>
-      <li>
-        <a
-          className=""
           href="/about"
           onClick={[Function]}
-          style={Object {}}
         >
           /about
         </a>
       </li>
       <li>
         <a
-          className=""
           href="/404-fake-route"
           onClick={[Function]}
-          style={Object {}}
         >
           /404-fake-route
         </a>
