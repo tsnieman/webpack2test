@@ -13,17 +13,17 @@
     'react'
   ],
 
-	"plugins": [
-		'dynamic-import-webpack', // for `import` support (code splitting).
+  "plugins": [
+    'dynamic-import-webpack', // for `import` support (code splitting).
 
-		[
-			'react-css-modules',
-			{
-				generateScopedName: '[path]__[name]__[local]__[hash:base64:5]',
-				context: 'src', // Must be same as webpack's context
-			}
-		],
-	],
+    [
+      'react-css-modules',
+      {
+        generateScopedName: '[path]__[name]__[local]__[hash:base64:5]',
+        context: 'src', // Must be same as webpack's context
+      }
+    ],
+  ],
 
   "env": {
     // only enable when process.env.NODE_ENV is 'development' or undefined

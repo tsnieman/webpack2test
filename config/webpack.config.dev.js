@@ -14,13 +14,13 @@ module.exports = {
   // The entry point for different bundles
   // i.e. where the app "begins"/inits.
   entry: {
-		vendor: [
-			'lodash',
-			'react',
-			'react-dom',
-			'react-router-dom',
-			'react-helmet',
-		],
+    vendor: [
+      'lodash',
+      'react',
+      'react-dom',
+      'react-router-dom',
+      'react-helmet',
+    ],
 
     app: [
       'react-hot-loader/patch',
@@ -38,7 +38,7 @@ module.exports = {
   },
 
   plugins: [
-		new webpack.HotModuleReplacementPlugin(),
+    new webpack.HotModuleReplacementPlugin(),
 
     // Recommended (NoErrorsPlugin is deprecated)
     new webpack.NoEmitOnErrorsPlugin(),
@@ -47,29 +47,29 @@ module.exports = {
     // any modules that get loaded ${minChunks} or more times,
     // it will bundle that into a commons.js
     // TODO use https://medium.com/webpack/webpack-bits-getting-the-most-out-of-the-commonschunkplugin-ab389e5f318#.bl0jid69f
-		new webpack.optimize.CommonsChunkPlugin({
-			name: 'commons',
-			filename: 'commons.bundle.js',
-			minChunks: 2,
-		}),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'commons',
+      filename: 'commons.bundle.js',
+      minChunks: 2,
+    }),
 
-		// TODO Not sure why "async" can't be used in the other CommonsChunkPlugin block...?
-		// Related..? https://github.com/webpack/webpack/issues/1812#issuecomment-168078904
-		new webpack.optimize.CommonsChunkPlugin({
-			async: true,
-			children: true,
-		}),
+    // TODO Not sure why "async" can't be used in the other CommonsChunkPlugin block...?
+    // Related..? https://github.com/webpack/webpack/issues/1812#issuecomment-168078904
+    new webpack.optimize.CommonsChunkPlugin({
+      async: true,
+      children: true,
+    }),
 
-		// Generate HTML to serve
-		new HtmlWebpackPlugin({
-			template: path.join(__dirname, '../src/index.html'),
-			filename: 'index.html',
-			inject: 'body',
-			favicon: path.join(__dirname, '..', 'public', 'images', 'favicon.ico'),
-			// chunks: ['commons', 'app'],
-		}),
+    // Generate HTML to serve
+    new HtmlWebpackPlugin({
+      template: path.join(__dirname, '../src/index.html'),
+      filename: 'index.html',
+      inject: 'body',
+      favicon: path.join(__dirname, '..', 'public', 'images', 'favicon.ico'),
+      // chunks: ['commons', 'app'],
+    }),
 
-		// new BundleAnalyzerPlugin(),
+    // new BundleAnalyzerPlugin(),
   ],
 
   resolve: {
@@ -93,12 +93,12 @@ module.exports = {
         exclude: [
           /node_modules/,
         ],
-					use: [
-						{
-							loader: 'babel-loader',
-							// options in .babelrc
-						},
-					],
+          use: [
+            {
+              loader: 'babel-loader',
+              // options in .babelrc
+            },
+          ],
       },
 
       // CSS
