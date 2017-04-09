@@ -11,15 +11,7 @@ import bodyParser from 'body-parser';
 import webpack from 'webpack';
 import webpackConfig from '../../config/webpack.config';
 
-import {
-  createIsomorphicWebpack,
-} from 'isomorphic-webpack';
-
-import {
-  renderToString,
-} from 'react-dom/server';
-
-import Helmet from 'react-helmet';
+// import Helmet from 'react-helmet';
 
 import {
   HTTP_PORT,
@@ -27,7 +19,7 @@ import {
 } from '../constants/server';
 
 import webpackDevMiddleware from 'webpack-dev-middleware';
-// import webpackHotMiddleware from 'webpack-hot-middleware';
+import webpackHotMiddleware from 'webpack-hot-middleware';
 import httpsEverywhereMiddleware from './middleware/httpsEverywhere';
 import securityMiddlewares from './middleware/security';
 import compressionMiddleware from 'compression';
@@ -38,35 +30,6 @@ const compiler = webpack(webpackConfig);
 // Setup the app.
 // --------------
 const app = express();
-
-// Isomorphic-specific webpack config.
-const isomorphicWebpackConfiguration = {
-  useCompilationPromise: true,
-  /*
-  nodeExternalsWhitelist: [
-  /^react\-router/,
-  /^history/,
-  /^postcss\-loader/,
-  /^style\-loader/,
-  /^css\-loader/,
-  /^babel-plugin-react-css-modules/
-  ],
-  */
-};
-
-// createIsomorphicWebpack(webpackConfig);
-// console.log(createIsomorphicWebpack(webpackConfig));
-// console.log(Object.keys(createIsomorphicWebpack(webpackConfig)));
-const {
-  // compiler,
-  evalBundleCode,
-  formatErrorStack,
-  // compilerCallback,
-
-  createCompilationPromise,
-  // TODO ^^^ "Do not use this in production. This implementation has a large overhead"
-  // TODO via https://github.com/gajus/isomorphic-webpack#isomorphic-webpack-faq-how-to-delay-request-handling-while-compilation-is-in-progress
-} = createIsomorphicWebpack(webpackConfig, isomorphicWebpackConfiguration);
 
 // Make sure the body is parsed before everything else (via https://github.com/analog-nico/hpp#getting-started)
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -83,27 +46,9 @@ app.use(compressionMiddleware());
 // Redirect to HTTPS
 app.all('*', httpsEverywhereMiddleware); // keep at top of routing calls
 
-// Compile for server (via isomorphic-webpack)
-app.use(async (req, res, next) => {
-  await createCompilationPromise();
-
-  next();
-});
-
-app.use((err, req, res, next) => {
-  console.log({ err, req, res }); // eslint-disable-line no-console
-
-  // TODO Does this go here?
-  console.error(formatErrorStack(err.stack)); // eslint-disable-line no-console
-
-  next();
-});
-
 if (process.env.NODE_ENV === 'development') {
   // Dev middleware
   app.use(webpackDevMiddleware(compiler, {
-    serverSideRender: true,
-
     publicPath: webpackConfig.output.publicPath, // where bundles live
 
     historyApiFallback: true,
@@ -119,7 +64,7 @@ if (process.env.NODE_ENV === 'development') {
     },
   }));
 
-  // app.use(webpackHotMiddleware(compiler));
+  app.use(webpackHotMiddleware(compiler));
 } else {
   // Webpack public path (aka webpack build location)
   app.use(webpackConfig.output.publicPath, express.static(path.join(__dirname, '/../../public/built')));
@@ -131,6 +76,10 @@ app.use('/public/images', express.static(path.join(__dirname, '/../../public/ima
 // TODO get some favicon middleware. there's like a billion favicons these days, holy cow.
 app.use('/public/images/favicon.png', express.static(path.join(__dirname, '/../../public/images/reactjs.png')));
 
+app.get('*', (req, res) => {
+  res.sendFile('index.html', { root: 'public/built' });
+});
+/*
 app.get('*', (req, res) => {
   const requestUrl = req.protocol + '://' + req.get('host') + req.originalUrl;
 
@@ -189,6 +138,7 @@ app.get('*', (req, res) => {
 </html>
   `);
 });
+*/
 
 // Launch http server.
 // ---------------------------

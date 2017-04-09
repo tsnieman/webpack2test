@@ -1,68 +1,57 @@
+/* eslint-disable import/no-webpack-loader-syntax */
+// ^ Didn't seem worth it to configure loaders to split pages.
+
 import React from 'react';
 
 // Routing
-import {
-  Route,
-  Switch,
-} from 'react-router-dom';
-
-let Router;
-if (typeof ISOMORPHIC_WEBPACK === 'undefined') {
-  Router = require('react-router-dom').BrowserRouter; // eslint-disable-line global-require
-} else {
-  Router = require('react-router-dom').StaticRouter; // eslint-disable-line global-require
-}
-
-// Declarative webpack code-splitting using Webpack 2 + System.import
-// import LazilyLoad, { importLazy } from '../../utility/LazilyLoad';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import Header from 'components/app/Header';
-import HomePage from 'components/pages/Home';
-import AboutPage from 'components/pages/About';
 import HTTP404Page from 'components/pages/HTTP404';
 
-const RootRouter = ({ initialLocation }) => (
-  <Router location={initialLocation} context={{}}>
+// Declarative webpack code-splitting / component loading
+import Bundle from 'components/utility/Bundle';
+
+// Lazy-loading / code-splitting via bundle-loader and Webpack 2
+const loadHome = require('bundle-loader?lazy&name=HomePage!../../pages/Home/Home.jsx');
+const loadAbout = require('bundle-loader?lazy&name=AboutPage!../../pages/About/About.jsx');
+
+const RootRouter = () => (
+  <BrowserRouter>
     <div>
       <Header />
 
       <div>
         <Switch>
-          {/* A <Switch> renders the first child <Route> that matches.
-            A <Route> with no path always matches. */}
           <Route
             exact
             path="/"
-            render={() => (
-              <HomePage />
+            render={props => (
+              <Bundle load={loadHome}>
+                {Home => <Home {...props} />}
+              </Bundle>
             )}
           />
 
           <Route
             exact
             path="/about"
-            render={() => (
-              <AboutPage />
+            render={props => (
+              <Bundle load={loadAbout}>
+                {About => <About {...props} />}
+              </Bundle>
             )}
           />
 
-          <Route
-            render={() => (
-              <HTTP404Page />
-            )}
-          />
+          <Route component={HTTP404Page} />
         </Switch>
       </div>
     </div>
-  </Router>
+  </BrowserRouter>
 );
 
 RootRouter.propTypes = {
-  initialLocation: React.PropTypes.string,
-};
-
-RootRouter.defaultProps = {
-  initialLocation: document.pathname,
+  // PLACEHOLDER
 };
 
 export default RootRouter;
