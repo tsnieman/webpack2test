@@ -1,0 +1,18 @@
+@import 'styles/_variables.css';
+
+.messages {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1rem;
+
+  :global(.app-messages-wrapper) {
+    > * {
+      margin-top: 1rem;
+      border: 1px solid;
+      background: var(--color-gray-90);
+      padding: 0.5em;
+    }
+  }
+}

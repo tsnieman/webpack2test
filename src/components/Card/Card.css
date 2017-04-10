@@ -1,0 +1,7 @@
+@import 'styles/_variables';
+
+:root {
+  --border-color: color(var(--color-black) alpha(15%));
+  --content-padding: 1em;
+  --border-radius: 2px;
+}

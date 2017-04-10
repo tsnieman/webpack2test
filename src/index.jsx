@@ -5,12 +5,18 @@ import ReactDOM from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
 import Root from './components/app/Root';
 
+// Store configuration
+import configureStore from 'store/configureStore';
+
+const initialState = {};
+const store = configureStore(initialState);
+
 const rootEl = document.getElementById('app-index');
 
 const renderApp = () => {
   ReactDOM.render(
     <AppContainer>
-      <Root />
+      <Root store={store} />
     </AppContainer>,
 
     // DOM element mounted to

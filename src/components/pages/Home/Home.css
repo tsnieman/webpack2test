@@ -2,3 +2,9 @@
 
 .wrapper {
 }
+
+.create-message-example {
+  + .create-message-example {
+    margin-left: 1rem;
+  }
+}

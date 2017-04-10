@@ -1,0 +1,10 @@
+@import 'styles/_variables.css';
+@import '../Card.css';
+
+.wrapper {
+}
+
+.title-text {
+  font-size: $h3-size;
+  font-weight: 700;
+}

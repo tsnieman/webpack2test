@@ -2,10 +2,12 @@
 // ^ Didn't seem worth it to configure loaders to split pages.
 
 import React from 'react';
+import './RootRouter.css';
 
 // Routing
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
+import AppMessages from 'containers/app/AppMessages';
 import Header from 'components/app/Header';
 import HTTP404Page from 'components/pages/HTTP404';
 
@@ -13,12 +15,16 @@ import HTTP404Page from 'components/pages/HTTP404';
 import Bundle from 'components/utility/Bundle';
 
 // Lazy-loading / code-splitting via bundle-loader and Webpack 2
-const loadHome = require('bundle-loader?lazy&name=HomePage!../../pages/Home/Home.jsx');
+const loadHome = require('bundle-loader?lazy&name=HomePage!../../../containers/pages/Home.jsx');
 const loadAbout = require('bundle-loader?lazy&name=AboutPage!../../pages/About/About.jsx');
 
 const RootRouter = () => (
   <BrowserRouter>
     <div>
+      <div styleName="messages">
+        <AppMessages />
+      </div>
+
       <Header />
 
       <div>

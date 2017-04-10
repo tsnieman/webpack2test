@@ -25,6 +25,7 @@ module.exports = {
 		],
 
 		app: [
+      'babel-polyfill',
       path.resolve(__dirname, '../src/index.jsx'),
 		],
 	},
