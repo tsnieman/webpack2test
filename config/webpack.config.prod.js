@@ -7,6 +7,8 @@ const contextPath = path.resolve(__dirname, '../src')
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
+const OfflinePlugin = require('offline-plugin');
+
 module.exports = {
   target: "web",
 
@@ -15,23 +17,23 @@ module.exports = {
 
   // The entry point for different bundles
   // i.e. where the app "begins"/inits.
-	entry: {
-		vendor: [
-			'lodash',
-			'react',
-			'react-dom',
-			'react-router-dom',
-			'react-helmet',
-		],
+  entry: {
+    vendor: [
+      'lodash',
+      'react',
+      'react-dom',
+      'react-router-dom',
+      'react-helmet',
+    ],
 
-		app: [
+    app: [
       path.resolve(__dirname, '../src/index.jsx'),
-		],
-	},
+    ],
+  },
 
   // The bundle outputs
   output: {
-    path: path.resolve(__dirname, '..', 'public', 'built'),
+    path: path.resolve(__dirname, '../public/built'),
     filename: '[name].bundle.js',
     publicPath: '/public/', // as it will be served
     chunkFilename: '[name]-[chunkhash].js',
@@ -42,18 +44,18 @@ module.exports = {
     // any modules that get loaded ${minChunks} or more times,
     // it will bundle that into a commons.js
     // TODO use https://medium.com/webpack/webpack-bits-getting-the-most-out-of-the-commonschunkplugin-ab389e5f318#.bl0jid69f
-		new webpack.optimize.CommonsChunkPlugin({
-			name: 'commons',
-			filename: 'commons.js',
-			minChunks: 2,
-		}),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'commons',
+      filename: 'commons.bundle.js',
+      minChunks: 2,
+    }),
 
-		// TODO Not sure why "async" can't be used in the other CommonsChunkPlugin block...?
-		// Related..? https://github.com/webpack/webpack/issues/1812#issuecomment-168078904
-		new webpack.optimize.CommonsChunkPlugin({
-			async: true,
-			children: true,
-		}),
+    // TODO Not sure why "async" can't be used in the other CommonsChunkPlugin block...?
+    // Related..? https://github.com/webpack/webpack/issues/1812#issuecomment-168078904
+    new webpack.optimize.CommonsChunkPlugin({
+      async: true,
+      children: true,
+    }),
 
     // Recommended (NoErrorsPlugin is deprecated)
     new webpack.NoEmitOnErrorsPlugin(),
@@ -90,6 +92,48 @@ module.exports = {
         comments: false,
         screw_ie8: true
       }
+    }),
+
+    // it's always better if OfflinePlugin is the last plugin added
+    new OfflinePlugin({
+      // updateStrategy: 'changed',
+      // autoUpdate: 1000 * 60 * 2,
+
+      safeToUseOptionalCaches: true,
+
+      caches: {
+        main: [
+          'commons.bundle.js',
+          'vendor.bundle.js',
+          'app.bundle.js',
+          //'index.html',
+        ],
+        additional: [
+          // '*.woff',,
+          // '*.woff2',
+          ':externals:',
+        ],
+        optional: [
+          ':rest:',
+        ]
+      },
+
+      //externals: [
+        //'/'
+        ////'favicon.ico',
+      //],
+
+      ServiceWorker: {
+        events: true,
+        navigateFallbackURL: '/',
+      },
+
+      AppCache: {
+        events: true,
+        FALLBACK: {
+          '/': '/index.html'
+        },
+      },
     }),
   ],
 

@@ -66,7 +66,6 @@ module.exports = {
       filename: 'index.html',
       inject: 'body',
       favicon: path.join(__dirname, '..', 'public', 'images', 'favicon.ico'),
-      // chunks: ['commons', 'app'],
     }),
 
     // new BundleAnalyzerPlugin(),
