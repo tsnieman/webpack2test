@@ -3,7 +3,8 @@ import React from 'react';
 import './AppMessages.css';
 
 // Components
-// import Button from 'components/Button';
+import Button from 'components/base/Button';
+import Message from 'components/base/Message';
 
 const AppMessages = (props) => {
   const {
@@ -25,13 +26,20 @@ const AppMessages = (props) => {
       className={`${className} app-messages-wrapper`}
     >
       {messages.map(message => (
-        <div key={message.id}>
-          <div>{message.body}</div>
+        <Message.Wrapper
+          key={message.id}
+          variant={message.variant || 'default'}
+        >
+          <Message.Body>
+            {message.body}
+          </Message.Body>
 
-          <button
-            onClick={() => removeMessage(message.id)}
-          >Dismiss</button>
-        </div>
+          <Message.Actions>
+            <Button
+              onClick={() => removeMessage(message.id)}
+            >Dismiss</Button>
+          </Message.Actions>
+        </Message.Wrapper>
       ))}
     </div>
   );

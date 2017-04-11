@@ -4,12 +4,22 @@ import React from 'react';
 import './Home.css';
 
 import Button from 'components/base/Button';
+import Message from 'components/base/Message';
 
 import reactImage from 'images/reactjs.png';
 
 const Home = ({ createMessage, createErrorMessage }) => (
   <div styleName="wrapper">
     <h1>Home page!</h1>
+
+    <hr />
+
+    <p>Testing messages:</p>
+    <Message.Wrapper>
+      <Message.Body>
+        Default
+      </Message.Body>
+    </Message.Wrapper>
 
     <hr />
 
