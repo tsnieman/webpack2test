@@ -33,7 +33,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, '../public/built'),
     filename: '[name].bundle.js',
-    publicPath: '/public/built/', // as it will be served
+    publicPath: '/', // as it will be served
     chunkFilename: '[name]-[chunkhash].js',
   },
 
