@@ -2,6 +2,7 @@
 
 html, body, input {
   color: var(--site-text-color);
+  font-family: var(--site-font-family); /* TODO maybe a new var ... native-font-family ? */
   font-size: var(--body-font-size);
 }
 
