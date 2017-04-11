@@ -6,10 +6,12 @@ import styles from './Wrapper.css';
 // import Icon from 'components/Icon';
 // import { Link } from 'react-router';
 
+/*
 const VALID_SUBCOMPONENTS = [
   'Body',
   'Actions',
 ];
+*/
 
 export const VARIANTS = [
   'default',
@@ -36,6 +38,7 @@ const Wrapper = (props) => {
   delete cleanProps.variant; // Message-specific
 
   if (children) {
+    /*
     const messageChildren = [];
     React.Children.map(children, (child) => {
       // TODO not sure displayName is reliable in prod... hmmm..
@@ -43,12 +46,13 @@ const Wrapper = (props) => {
       const isValidSubcomponent = hasType && VALID_SUBCOMPONENTS.includes(child.type.displayName);
       if (isValidSubcomponent) messageChildren.push(child);
     });
+    */
 
     const styleName = styles[styleVariant];
 
     return (
       <div {...cleanProps} className={`${styleName} ${className} message-wrapper`}>
-        {messageChildren}
+        {children}
       </div>
     );
   }
