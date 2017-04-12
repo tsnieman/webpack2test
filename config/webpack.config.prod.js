@@ -7,6 +7,7 @@ const contextPath = path.resolve(__dirname, '../src')
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const OfflinePlugin = require('offline-plugin');
+const OptimizeJsPlugin = require("optimize-js-plugin");
 
 module.exports = {
   target: "web",
@@ -91,6 +92,13 @@ module.exports = {
         comments: false,
         screw_ie8: true
       }
+    }),
+
+    // Webpack version of https://github.com/nolanlawson/optimize-js
+    // which uses some JS engine "hacks" to optimize the execution
+    // of some functions.
+    new OptimizeJsPlugin({
+      sourceMap: false,
     }),
 
     // it's always better if OfflinePlugin is the last plugin added
