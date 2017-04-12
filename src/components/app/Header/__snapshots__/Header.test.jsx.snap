@@ -1,8 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Header is tested 1`] = `
-<header>
-  <strong>
+<header
+  className="components-app-Header-__Header__wrapper__Nv1qS"
+>
+  <strong
+    className="components-app-Header-__Header__brand__3uFpN"
+  >
     <a
       href="/"
       onClick={[Function]}
@@ -11,7 +15,9 @@ exports[`Header is tested 1`] = `
     </a>
   </strong>
   <nav>
-    <ul>
+    <ul
+      className="components-app-Header-__Header__nav-items__1xViP"
+    >
       <li>
         <a
           href="/about"

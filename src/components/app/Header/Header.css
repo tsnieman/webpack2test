@@ -1,0 +1,22 @@
+.wrapper {
+  padding: 1rem;
+  text-align: center;
+}
+
+.brand {
+  font-size: 2em;
+}
+
+.nav-items {
+  margin: 0;
+  padding: 0;
+
+  & > * {
+    display: inline-block;
+    vertical-align: middle;
+
+    + * {
+      margin-left: 1rem;
+    }
+  }
+}

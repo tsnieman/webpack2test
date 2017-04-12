@@ -1,12 +1,14 @@
 import React from 'react';
+import './Header.css';
+
 import { Link } from 'react-router-dom';
 
 const Header = () => (
-  <header>
-    <strong><Link to="/">🍞 webpack2test</Link></strong>
+  <header styleName="wrapper">
+    <strong styleName="brand"><Link to="/">🍞 webpack2test</Link></strong>
 
     <nav>
-      <ul>
+      <ul styleName="nav-items">
         <li>
           <Link to="/about">/about</Link>
         </li>

@@ -1,6 +1,8 @@
 @import 'styles/_variables.css';
 
 .wrapper {
+  width: 500px;
+  margin: 0 auto;
 }
 
 .create-message-example {
