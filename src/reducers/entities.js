@@ -1,4 +1,4 @@
-import merge from 'lodash/merge';
+import _ from 'lodash';
 
 // Constants
 import {
@@ -11,7 +11,7 @@ const INITIAL_STATE = {
 
 const reducers = {
   [ENTITIES_ACTIONS.SET_ENTITIES]: (state, action) => (
-    merge({}, state, action.entities)
+    _.merge({}, state, action.entities)
   ),
 };
 

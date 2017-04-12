@@ -18,6 +18,8 @@
 
     'dynamic-import-webpack', // for `import` support (code splitting).
 
+    'lodash', // babel-plugin-lodash
+
     [
       'react-css-modules',
       {

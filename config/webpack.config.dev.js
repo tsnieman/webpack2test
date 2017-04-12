@@ -6,6 +6,7 @@ const contextPath = path.resolve(__dirname, '../src')
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 
 module.exports = {
   // The 'base folder' for the app
@@ -38,6 +39,9 @@ module.exports = {
   },
 
   plugins: [
+    // https://github.com/lodash/lodash-webpack-plugin
+    new LodashModuleReplacementPlugin,
+
     new webpack.HotModuleReplacementPlugin(),
 
     // Recommended (NoErrorsPlugin is deprecated)

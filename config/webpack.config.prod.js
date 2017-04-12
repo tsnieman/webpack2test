@@ -8,6 +8,7 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const OfflinePlugin = require('offline-plugin');
 const OptimizeJsPlugin = require("optimize-js-plugin");
+const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 
 module.exports = {
   target: "web",
@@ -40,6 +41,9 @@ module.exports = {
   },
 
   plugins: [
+    // https://github.com/lodash/lodash-webpack-plugin
+    new LodashModuleReplacementPlugin,
+
     // COMMON CHUNKS
     // any modules that get loaded ${minChunks} or more times,
     // it will bundle that into a commons.js

@@ -28,12 +28,6 @@ import DashboardPlugin from 'webpack-dashboard/plugin';
 // Setup webpack
 const compiler = webpack(webpackConfig);
 
-// Webpack Dashboard configuration
-if (process.env.NODE_ENV === 'development') {
-  const dashboard = new Dashboard();
-  compiler.apply(new DashboardPlugin(dashboard.setData));
-}
-
 // Setup the app.
 // --------------
 const app = express();
@@ -51,6 +45,10 @@ app.use(...securityMiddlewares);
 app.use(compressionMiddleware());
 
 if (process.env.NODE_ENV === 'development') {
+  // Webpack Dashboard configuration
+  const dashboard = new Dashboard();
+  compiler.apply(new DashboardPlugin(dashboard.setData));
+
   // Dev middleware
   app.use(webpackDevMiddleware(compiler, {
     publicPath: webpackConfig.output.publicPath, // where bundles live
