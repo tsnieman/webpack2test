@@ -40,6 +40,8 @@
     "shortid": "^2.2.8",
     "web-app-manifest-loader": "^0.1.1",
     "webpack": "^2.2.1",
+    "webpack-bundle-analyzer": "^2.3.1",
+    "webpack-dashboard": "^0.3.0",
     "webpack-dev-middleware": "^1.10.1",
     "webpack-hot-middleware": "^2.17.1"
   },
@@ -76,8 +78,7 @@
     "react-test-renderer": "^15.4.1",
     "style-loader": "0.13.1",
     "uglify-js": "^2.8.12",
-    "url-loader": "^0.5.8",
-    "webpack-bundle-analyzer": "^2.3.1"
+    "url-loader": "^0.5.8"
   },
   "jest": {
     "moduleDirectories": [

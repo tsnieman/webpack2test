@@ -20,8 +20,19 @@ import webpackHotMiddleware from 'webpack-hot-middleware';
 import securityMiddlewares from './middleware/security';
 import compressionMiddleware from 'compression';
 
+// Webpack Dashboard
+// https://github.com/FormidableLabs/webpack-dashboard
+import Dashboard from 'webpack-dashboard';
+import DashboardPlugin from 'webpack-dashboard/plugin';
+
 // Setup webpack
 const compiler = webpack(webpackConfig);
+
+// Webpack Dashboard configuration
+if (process.env.NODE_ENV === 'development') {
+  const dashboard = new Dashboard();
+  compiler.apply(new DashboardPlugin(dashboard.setData));
+}
 
 // Setup the app.
 // --------------
@@ -46,8 +57,6 @@ if (process.env.NODE_ENV === 'development') {
 
     historyApiFallback: true,
 
-    // hot: true,
-
     stats: {
       colors: true,
 
@@ -55,6 +64,8 @@ if (process.env.NODE_ENV === 'development') {
       chunkModules: false,
       assets: false,
     },
+
+    quiet: true, // lets WebpackDashboard do its thing
   }));
 
   app.use(webpackHotMiddleware(compiler));
