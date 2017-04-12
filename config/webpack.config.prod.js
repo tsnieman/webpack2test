@@ -190,6 +190,21 @@ module.exports = {
           //},
         ],
       },
+
+      {
+        test: /manifest.json$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: 'manifest.json',
+            },
+          },
+          {
+            loader: 'web-app-manifest-loader',
+          },
+        ],
+      }
     ],
   },
 

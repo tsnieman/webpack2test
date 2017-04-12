@@ -1,10 +1,6 @@
 node_modules/
 bower_components/
-public/*.js
-public/*.png
-public/*.ico
-public/*.html
-public/appcache/
+public/*
 built/
 npm-debug.log
 .*.swp

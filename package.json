@@ -2,7 +2,7 @@
   "name": "webpack2test",
   "version": "1.0.0",
   "scripts": {
-    "clean": "rm -rf ./public/built",
+    "clean": "rm -rf ./public",
     "build:dev": "npm run clean && webpack --config config/webpack.config.js",
     "start:dev": "export NODE_ENV=development && npm run build:dev && ./node_modules/.bin/babel-node ./src/server/index.js --presets es2015,stage-0,react",
     "build:prod": "npm run clean && webpack -p --config config/webpack.config.js",
@@ -38,6 +38,7 @@
     "redux": "^3.6.0",
     "redux-saga": "^0.14.6",
     "shortid": "^2.2.8",
+    "web-app-manifest-loader": "^0.1.1",
     "webpack": "^2.2.1",
     "webpack-dev-middleware": "^1.10.1",
     "webpack-hot-middleware": "^2.17.1"

@@ -6,6 +6,8 @@ import ReactDOM from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
 import Root from './components/app/Root';
 
+import 'json/manifest.json';
+
 import * as OfflinePluginRuntime from 'offline-plugin/runtime';
 
 if (process.env.NODE_ENV === 'production') {

@@ -135,6 +135,23 @@ module.exports = {
           //},
         ],
       },
+
+      // Web app manifest
+      // https://developers.google.com/web/fundamentals/engage-and-retain/web-app-manifest/
+      {
+        test: /manifest.json$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: 'manifest.json',
+            },
+          },
+          {
+            loader: 'web-app-manifest-loader',
+          },
+        ],
+      }
     ],
   },
 
