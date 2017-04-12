@@ -1,0 +1,12 @@
+@import 'styles/_variables.css';
+@import '../Card.css';
+
+.wrapper {
+  :global {
+    .button {
+      + .button {
+        margin-left: 1em;
+      }
+    }
+  }
+}

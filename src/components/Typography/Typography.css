@@ -1,0 +1,41 @@
+@import 'styles/_variables.css';
+
+@keyframes dim-blink {
+  50% {
+    opacity: 0.25;
+  }
+}
+
+/* TODO explanation of why font-family isn't set at body (i.e. faster rendering) */
+.wrapper {
+  line-height: var(--site-line-height);
+  font-family: var(--site-font-family);
+
+  h1 {
+    font-size: var(--h1-size);
+    font-weight: 700;
+  }
+
+  h2 {
+    font-size: var(--h2-size);
+    font-weight: 700;
+  }
+
+  h3 {
+    font-size: var(--h3-size);
+    font-weight: 700;
+  }
+
+  /*
+  :--text-blocks {
+    + :--text-blocks {
+      margin-top: 1em;
+    }
+  }
+  */
+}
+
+.wrapper-loading {
+  animation: dim-blink 1.25s;
+  animation-iteration-count: infinite;
+}

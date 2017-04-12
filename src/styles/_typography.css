@@ -1,0 +1,25 @@
+@import '_variables.css';
+
+html, body, input {
+  color: var(--site-text-color);
+  font-family: var(--site-font-family); /* TODO maybe a new var ... native-font-family ? */
+  font-size: var(--body-font-size);
+}
+
+table {
+  th {
+    text-align: left; /* Chrome centers <th>s */
+  }
+}
+
+a {
+ color: var(--site-link-color);
+}
+
+dl {
+  margin: 0; /* Chrome adds -webkit-margin-before|after */
+}
+
+dd {
+  margin: 0; /* Chrome adds -webkit-margin-start */
+}

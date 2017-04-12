@@ -60,7 +60,7 @@ if (process.env.NODE_ENV === 'development') {
   app.use(webpackHotMiddleware(compiler));
 } else {
   // Webpack public path (aka webpack build location)
-  app.use(webpackConfig.output.publicPath, express.static(path.join(__dirname, '/../../public/built')));
+  app.use(webpackConfig.output.publicPath, express.static(path.join(__dirname, '/../../public')));
 }
 
 // General image access, nothing fancy.
@@ -70,7 +70,7 @@ app.use('/public/images', express.static(path.join(__dirname, '/../../public/ima
 app.use('/public/images/favicon.png', express.static(path.join(__dirname, '/../../public/images/reactjs.png')));
 
 app.get('*', (req, res) => {
-  res.sendFile('index.html', { root: 'public/built' });
+  res.sendFile('index.html', { root: 'public' });
 });
 
 // Launch http server.

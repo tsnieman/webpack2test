@@ -6,6 +6,7 @@ const contextPath = path.resolve(__dirname, '../src')
 // Webpack
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const OfflinePlugin = require('offline-plugin');
 
 module.exports = {
   target: "web",
@@ -31,9 +32,9 @@ module.exports = {
 
   // The bundle outputs
   output: {
-    path: path.resolve(__dirname, '..', 'public', 'built'),
+    path: path.resolve(__dirname, '..', 'public'),
     filename: '[name].bundle.js',
-    publicPath: '/public/', // as it will be served
+    publicPath: '/', // as it will be served
     chunkFilename: '[name]-[chunkhash].js',
   },
 
@@ -44,7 +45,7 @@ module.exports = {
     // TODO use https://medium.com/webpack/webpack-bits-getting-the-most-out-of-the-commonschunkplugin-ab389e5f318#.bl0jid69f
 		new webpack.optimize.CommonsChunkPlugin({
 			name: 'commons',
-			filename: 'commons.js',
+			filename: 'commons.bundle.js',
 			minChunks: 2,
 		}),
 
@@ -63,7 +64,7 @@ module.exports = {
       template: path.join(__dirname, '../src/index.html'),
       filename: 'index.html',
       inject: 'body',
-      favicon: path.join(__dirname, '..', 'public', 'images', 'favicon.ico'),
+      favicon: path.join(__dirname, '..', 'src', 'images', 'favicon.ico'),
       minify: {
         removeComments: true,
         collapseWhitespace: true,
@@ -91,6 +92,41 @@ module.exports = {
         screw_ie8: true
       }
     }),
+
+    // it's always better if OfflinePlugin is the last plugin added
+    new OfflinePlugin({
+      safeToUseOptionalCaches: true,
+
+      caches: {
+        main: [
+          'commons.bundle.js',
+          'vendor.bundle.js',
+          'app.bundle.js',
+          ':rest:',
+        ],
+        additional: [
+          ':externals:',
+        ],
+      },
+
+      externals: [
+        '/'
+      ],
+
+      ServiceWorker: {
+        events: true,
+        navigateFallbackURL: '/',
+        publicPath: '/sw.js'
+      },
+
+      AppCache: {
+        events: true,
+        publicPath: '/appcache',
+        FALLBACK: {
+          '/': '/'
+        },
+      },
+    }),
   ],
 
   resolve: {
@@ -99,7 +135,6 @@ module.exports = {
       "node_modules",
       path.resolve(__dirname, "..", "src"),
       path.resolve(__dirname, "..", "config"),
-      path.resolve(__dirname, '..', 'public'),
     ],
 
     // Seems to resolve a "Can't resolve './Header'" (i.e. index) error from webpack
@@ -155,6 +190,21 @@ module.exports = {
           //},
         ],
       },
+
+      {
+        test: /manifest.json$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: 'manifest.json',
+            },
+          },
+          {
+            loader: 'web-app-manifest-loader',
+          },
+        ],
+      }
     ],
   },
 

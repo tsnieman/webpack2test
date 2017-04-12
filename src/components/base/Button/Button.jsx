@@ -17,6 +17,7 @@ export const VARIANTS = [
 
 const Button = (props) => {
   const {
+    className,
     children,
 
     // Button-specific
@@ -44,6 +45,7 @@ const Button = (props) => {
     <Link
       {...cleanProps}
       styleName={styleVariant}
+      className={className}
     >
       {children}
     </Link>
@@ -51,6 +53,7 @@ const Button = (props) => {
     <button
       {...cleanProps}
       styleName={styleVariant}
+      className={className}
     >
       {children}
     </button>
@@ -59,6 +62,7 @@ const Button = (props) => {
 
 Button.propTypes = {
   children: React.PropTypes.any, // eslint-disable-line react/forbid-prop-types
+  className: React.PropTypes.string,
 
   // Button-specific
   variant: React.PropTypes.string,

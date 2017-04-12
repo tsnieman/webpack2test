@@ -1,0 +1,34 @@
+@import 'styles/_variables.css';
+@import '../Card.css';
+
+/* TODO */
+:root {
+  --think-of-a-good-name: 0.25em;
+}
+
+.wrapper {
+  padding: var(--content-padding);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+
+  :global {
+    .card-title {
+      + .card-body {
+        margin-top: var(--think-of-a-good-name);
+      }
+    }
+
+    /* TODO just put into Actions.css? I mean,
+     * I don't think there's ever going to be
+     * action-only cards... right? */
+    * + .card-actions {
+      border-top: 1px solid var(--border-color);
+      margin-top: var(--content-padding);
+      margin-right: var(--content-padding);
+      margin-left: var(--content-padding);
+      padding-top: var(--content-padding);
+      padding-right: var(--content-padding);
+      padding-left: var(--content-padding);
+    }
+  }
+}

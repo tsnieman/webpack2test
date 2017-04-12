@@ -1,0 +1,36 @@
+@import 'styles/_variables';
+@import '../Message';
+
+.message-base {
+  padding: var(--content-padding);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  composes: flexbox row from '../../../../styles/_flexbox.css'; 
+  align-items: center;
+  justify-content: space-between;
+}
+
+.message-default {
+  composes: message-base;
+  background: var(--message-default-background-color);
+}
+
+.message-info {
+  composes: message-base;
+  background: var(--message-info-background-color);
+}
+
+.message-positive {
+  composes: message-base;
+  background: var(--message-positive-background-color);
+}
+
+.message-negative {
+  composes: message-base;
+  background: var(--message-negative-background-color);
+}
+
+.message-inverse {
+  composes: message-base;
+  background: var(--message-inverse-background-color);
+}
