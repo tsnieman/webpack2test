@@ -2,7 +2,7 @@
 @import '../Card.css';
 
 .wrapper {
-  margin: -$content-padding;
+  margin: calc(-1 * var(--content-padding));
   margin-bottom: 0;
 
   /* TODO remove when Card.Wrapper children ordering is coded. */
