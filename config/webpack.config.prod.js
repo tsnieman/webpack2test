@@ -96,7 +96,7 @@ module.exports = {
 
     // Webpack version of https://github.com/nolanlawson/optimize-js
     // which uses some JS engine "hacks" to optimize the execution
-    // of some functions.
+    // of some functions. // TODO actually test this lol
     new OptimizeJsPlugin({
       sourceMap: false,
     }),
