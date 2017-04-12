@@ -64,7 +64,7 @@ module.exports = {
       template: path.join(__dirname, '../src/index.html'),
       filename: 'index.html',
       inject: 'body',
-      favicon: path.join(__dirname, '..', 'public', 'images', 'favicon.ico'),
+      favicon: path.join(__dirname, '..', 'src', 'images', 'favicon.ico'),
       minify: {
         removeComments: true,
         collapseWhitespace: true,
@@ -135,7 +135,6 @@ module.exports = {
       "node_modules",
       path.resolve(__dirname, "..", "src"),
       path.resolve(__dirname, "..", "config"),
-      path.resolve(__dirname, '..', 'public'),
     ],
 
     // Seems to resolve a "Can't resolve './Header'" (i.e. index) error from webpack
