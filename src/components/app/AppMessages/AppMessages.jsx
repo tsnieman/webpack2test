@@ -6,6 +6,8 @@ import './AppMessages.css';
 import Button from 'components/base/Button';
 import Message from 'components/base/Message';
 
+import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup';
+
 const AppMessages = (props) => {
   const {
     className,
@@ -23,24 +25,32 @@ const AppMessages = (props) => {
   return (
     <div
       {...cleanProps}
+      styleName="wrapper"
       className={`${className} app-messages-wrapper`}
     >
-      {messages.map(message => (
-        <Message.Wrapper
-          key={message.id}
-          variant={message.variant || 'default'}
-        >
-          <Message.Body>
-            {message.body}
-          </Message.Body>
+      <CSSTransitionGroup
+        transitionName="app-message-transition"
+        transitionEnterTimeout={250}
+        transitionLeaveTimeout={300}
+      >
+        {messages.map(message => (
+          <Message.Wrapper
+            variant={message.variant || 'default'}
+            styleName="message"
+            key={message.id}
+          >
+            <Message.Body>
+              {message.body}
+            </Message.Body>
 
-          <Message.Actions>
-            <Button
-              onClick={() => removeMessage(message.id)}
-            >Dismiss</Button>
-          </Message.Actions>
-        </Message.Wrapper>
-      ))}
+            <Message.Actions>
+              <Button
+                onClick={() => removeMessage(message.id)}
+              >Dismiss</Button>
+            </Message.Actions>
+          </Message.Wrapper>
+        ))}
+      </CSSTransitionGroup>
     </div>
   );
 };

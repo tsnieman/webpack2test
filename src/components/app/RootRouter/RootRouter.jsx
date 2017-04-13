@@ -2,7 +2,6 @@
 // ^ Didn't seem worth it to configure loaders to split pages.
 
 import React from 'react';
-import './RootRouter.css';
 
 // Routing
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
@@ -21,9 +20,7 @@ const loadAbout = require('bundle-loader?lazy&name=AboutPage!../../pages/About/A
 const RootRouter = () => (
   <BrowserRouter>
     <div>
-      <div styleName="messages">
-        <AppMessages />
-      </div>
+      <AppMessages />
 
       <Header />
 

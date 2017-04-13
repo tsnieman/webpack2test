@@ -3,6 +3,7 @@
 .wrapper {
   width: 500px;
   margin: 0 auto;
+  padding-bottom: 500px; /* breathing room */
 }
 
 .create-message-example {
