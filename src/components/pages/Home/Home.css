@@ -1,9 +1,21 @@
 @import 'styles/_variables.css';
 
 .wrapper {
-  width: 500px;
+  width: 800px;
   margin: 0 auto;
   padding-bottom: 500px; /* breathing room */
+
+  > section {
+    + section {
+      margin-top: 2rem;
+    }
+  }
+}
+
+.message {
+  + .message {
+    margin-top: 1rem;
+  }
 }
 
 .create-message-example {

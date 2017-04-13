@@ -32,7 +32,7 @@ module.exports = {
 
   // The bundle outputs
   output: {
-    path: path.resolve(__dirname, '../public/built'),
+    path: path.resolve(__dirname, '../public'),
     filename: '[name].bundle.js',
     publicPath: '/', // as it will be served
     chunkFilename: '[name]-[chunkhash].js',

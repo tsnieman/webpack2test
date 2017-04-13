@@ -1,6 +1,9 @@
 @import 'styles/_variables.css';
 
 .wrapper {
+  width: 800px;
+  margin: 0 auto;
+  padding-bottom: 500px; /* breathing room */
 }
 
 .human {

@@ -11,24 +11,24 @@ import reactImage from 'images/reactjs.png';
 
 const Home = ({ createMessage, createErrorMessage }) => (
   <div styleName="wrapper">
-    <h1>Home page!</h1>
-    <p>(more like kitchen sink)</p>
-
-    <hr />
+    <section>
+      <h1>Home page!</h1>
+      <p>(more like kitchen sink)</p>
+    </section>
 
     <section>
       <h2>Messages</h2>
 
       {MESSAGE_VARIANTS.map(variant => (
-        <Message.Wrapper variant={variant} key={variant}>
-          <Message.Body>
-            variant: <code>{variant}</code>
-          </Message.Body>
-        </Message.Wrapper>
+        <div styleName="message" key={variant}>
+          <Message.Wrapper variant={variant}>
+            <Message.Body>
+              variant: <code>{variant}</code>
+            </Message.Body>
+          </Message.Wrapper>
+        </div>
       ))}
     </section>
-
-    <hr />
 
     <section>
       <h2>Images</h2>
@@ -40,9 +40,7 @@ const Home = ({ createMessage, createErrorMessage }) => (
       />
     </section>
 
-    <hr />
-
-    <div>
+    <section>
       <h2>"AppMessages" system...</h2>
       <p>Dispatch actions (or catch errors in sagas!) for a site-wide messaging system.</p>
       <p>TODO: better explanation.</p>
@@ -57,7 +55,7 @@ const Home = ({ createMessage, createErrorMessage }) => (
         onClick={() => createErrorMessage('This is an app error message!')}
         variant="negative"
       >Create an app error message</Button>
-    </div>
+    </section>
   </div>
 );
 

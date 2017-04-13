@@ -10,6 +10,7 @@ import {
   DEFAULT_DESCRIPTION,
 } from 'constants/app';
 
+import '../../../styles/_reset.css';
 import '../../../styles/_typography.css';
 
 const Root = ({ store }) => (
