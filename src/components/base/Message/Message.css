@@ -1,13 +1,13 @@
 @import 'styles/_variables';
 
 :root {
-  --border-color: color(var(--color-black) alpha(15%));
+  --border-color: color(var(--color-black) alpha(0.2));
   --content-padding: 1em;
   --border-radius: 2px;
 
-  --message-default-background-color: color(var(--color-gray-70) alpha(0.1));
+  --message-default-background-color: color(var(--color-gray-70) alpha(0.25));
   --message-info-background-color: color(#55a1be lightness(+30%)); /* TODO variable color */
   --message-positive-background-color: color(var(--color-positive) lightness(+30%));
   --message-negative-background-color: color(var(--color-negative) lightness(+30%));
-  --message-inverse-background-color: color(var(--color-white) alpha(0.1));
+  --message-inverse-background-color: color(var(--color-white) alpha(0.25));
 }

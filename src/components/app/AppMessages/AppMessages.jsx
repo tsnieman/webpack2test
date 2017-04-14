@@ -34,21 +34,24 @@ const AppMessages = (props) => {
         transitionLeaveTimeout={300}
       >
         {messages.map(message => (
-          <Message.Wrapper
-            variant={message.variant || 'default'}
+          <div
             styleName="message"
             key={message.id}
           >
-            <Message.Body>
-              {message.body}
-            </Message.Body>
+            <Message.Wrapper
+              variant={message.variant || 'default'}
+            >
+              <Message.Body>
+                {message.body}
+              </Message.Body>
 
-            <Message.Actions>
-              <Button
-                onClick={() => removeMessage(message.id)}
-              >Dismiss</Button>
-            </Message.Actions>
-          </Message.Wrapper>
+              <Message.Actions>
+                <Button
+                  onClick={() => removeMessage(message.id)}
+                >Dismiss</Button>
+              </Message.Actions>
+            </Message.Wrapper>
+          </div>
         ))}
       </CSSTransitionGroup>
     </div>
