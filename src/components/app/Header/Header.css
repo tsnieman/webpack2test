@@ -1,19 +1,33 @@
+@import 'styles/_variables.css';
+
 .wrapper {
+  background: var(--color-brand-primary);
   padding: 1rem;
   text-align: center;
 }
 
 .brand {
   font-size: 2em;
+
+  a {
+    color: var(--color-white);
+  }
 }
 
 .nav-items {
-  margin: 0;
+  margin: 1em 0 0 0;
   padding: 0;
+
+  a {
+    color: var(--color-white);
+  }
 
   & > * {
     display: inline-block;
     vertical-align: middle;
+    padding: 0.1em 0.5em;
+    border-bottom: 2px solid color(var(--color-white) alpha(25%));
+    /*background: color(var(--color-white) alpha(25%));*/
 
     + * {
       margin-left: 1rem;

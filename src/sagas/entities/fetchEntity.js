@@ -23,7 +23,7 @@ export function* fetchEntity(action = {}) {
       schema: action.schema,
     });
   } catch (err) {
-    console.log({ err }); // eslint-disable-line no-console
+    // console.log({ err }); // eslint-disable-line no-console
     // Pass the error back to the `catch` of
     // the saga which spawned this.
     throw err;

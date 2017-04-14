@@ -1,9 +1,13 @@
 import React from 'react';
 import './HTTP404.css';
 
+import Typography from 'components/Typography';
+
 const HTTP404 = () => (
   <div styleName="wrapper">
-    <h1>HTTP404 page!</h1>
+    <Typography>
+      <h1>404</h1>
+    </Typography>
   </div>
 );
 

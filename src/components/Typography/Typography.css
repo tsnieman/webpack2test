@@ -26,13 +26,21 @@
     font-weight: 700;
   }
 
-  /*
+  ul {
+    list-style-type: disc;
+    list-style-position: inside;
+
+    li {
+      display: list-item;
+      list-style-position: inside;
+    }
+  }
+
   :--text-blocks {
     + :--text-blocks {
       margin-top: 1em;
     }
   }
-  */
 }
 
 .wrapper-loading {

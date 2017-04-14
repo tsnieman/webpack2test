@@ -1,41 +1,45 @@
 :root {
-	--color: green;
+  /* Basic colors */
+  --color-black: #000;
+  --color-gray-10: color(var(--color-black) lightness(10%));
+  --color-gray-20: color(var(--color-black) lightness(20%));
+  --color-gray-30: color(var(--color-black) lightness(30%));
+  --color-gray-40: color(var(--color-black) lightness(40%));
+  --color-gray-50: color(var(--color-black) lightness(50%));
+  --color-gray-60: color(var(--color-black) lightness(60%));
+  --color-gray-70: color(var(--color-black) lightness(70%));
+  --color-gray-80: color(var(--color-black) lightness(80%));
+  --color-gray-90: color(var(--color-black) lightness(90%));
+  --color-white: #fff;
 
-	/* Basic colors */
-	--color-black: #000;
-	--color-gray-10: color(var(--color-black) lightness(10%));
-	--color-gray-20: color(var(--color-black) lightness(20%));
-	--color-gray-30: color(var(--color-black) lightness(30%));
-	--color-gray-40: color(var(--color-black) lightness(40%));
-	--color-gray-50: color(var(--color-black) lightness(50%));
-	--color-gray-60: color(var(--color-black) lightness(60%));
-	--color-gray-70: color(var(--color-black) lightness(70%));
-	--color-gray-80: color(var(--color-black) lightness(80%));
-	--color-gray-90: color(var(--color-black) lightness(90%));
-	--color-white: #fff;
+  /* Basic "named" colors */
+  --brand-green: #69ab83;
 
-	/* Basic "named" colors */
-	--icicles: #f4f7f7;
-	--tyre: #3e4147;
+  /* Project colors */
+  --color-brand-primary: var(--brand-green);
 
-	/* Experimental colors */
-	--color-light-on-dark: var(--color-white); /* lighter color for putting on dark bg */
-	--color-dark-on-light: var(--color-black); /* darker color for putting on light bg */
-	--color-disabled-background: var(--color-gray-80);
-	--color-disabled-text: var(--color-gray-60);
+  /* Experimental colors */
+  --color-light-on-dark: var(--color-white); /* lighter color for putting on dark bg */
+  --color-dark-on-light: var(--color-black); /* darker color for putting on light bg */
+  --color-disabled-background: var(--color-gray-80);
+  --color-disabled-text: var(--color-gray-60);
 
-	/* "State" colors */
-	--color-positive: #41ac6a;
-	--color-negative: #ca4b4b;
+  /* "State" colors */
+  --color-positive: #41ac6a;
+  --color-negative: #ca4b4b;
 
-	/* Typography */
-	--body-font-size: 16px;
-	--site-text-color: var(--tyre);
-	/*$site-font-family: 'Roboto', sans-serif;*/
-	--site-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-	--site-line-height: 1.4;
-	--site-link-color: #03a9f4;
-	--h1-size: 2em;
-	--h2-size: 1.5em;
-	--h3-size: 1.3em;
+  /* Typography */
+  --body-font-size: 16px;
+  --site-text-color: var(--tyre);
+  /*$site-font-family: 'Roboto', sans-serif;*/
+  --site-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  --site-line-height: 1.4;
+  --site-link-color: #03a9f4;
+  --h1-size: 2em;
+  --h2-size: 1.5em;
+  --h3-size: 1.3em;
 }
+
+/* Custom selectors */
+@custom-selector :--headings h1, h2, h3, h4, h5, h6;
+@custom-selector :--text-blocks p, ul, blockquote, h1, h2, h3, h4, h5, h6;

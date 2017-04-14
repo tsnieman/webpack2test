@@ -3,9 +3,11 @@ import './Header.css';
 
 import { Link } from 'react-router-dom';
 
+import { PLAINTEXT_NAME } from 'constants/app';
+
 const Header = () => (
   <header styleName="wrapper">
-    <strong styleName="brand"><Link to="/">🍞 webpack2test</Link></strong>
+    <strong styleName="brand"><Link to="/">{PLAINTEXT_NAME}</Link></strong>
 
     <nav>
       <ul styleName="nav-items">

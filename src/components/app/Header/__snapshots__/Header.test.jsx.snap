@@ -11,7 +11,7 @@ exports[`Header is tested 1`] = `
       href="/"
       onClick={[Function]}
     >
-      🍞 webpack2test
+      webpack2test
     </a>
   </strong>
   <nav>

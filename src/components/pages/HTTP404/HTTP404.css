@@ -1,4 +1,9 @@
 @import 'styles/_variables.css';
 
 .wrapper {
+  width: 100%;
+  max-width: 800px;
+  margin: 2rem auto 0 auto;
+  text-align: center;
+  font-size: 5rem;
 }

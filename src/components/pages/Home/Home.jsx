@@ -22,7 +22,10 @@ const Home = ({ createMessage, createErrorMessage }) => (
     <section>
       <Typography>
         <h2>Messages</h2>
+        <p>Basic component for displaying small bits of information.</p>
       </Typography>
+
+      <br />
 
       {MESSAGE_VARIANTS.map(variant => (
         <div styleName="message" key={variant}>
@@ -37,22 +40,28 @@ const Home = ({ createMessage, createErrorMessage }) => (
 
     <section>
       <Typography>
-        <h2>Images</h2>
-      </Typography>
-
-      <img
-        src={reactImage}
-        alt="react js logo"
-        style={{ width: 100 }}
-      />
-    </section>
-
-    <section>
-      <Typography>
         <h2>"AppMessages" system...</h2>
-        <p>Dispatch actions (or catch errors in sagas!) for a site-wide messaging system.</p>
-        <p>TODO: better explanation.</p>
+
+        <ul>
+          <li>Dispatched via redux actions</li>
+          <li>Stored in redux store (as an Array)</li>
+          <li>When a new AppMessage is added to the store, it will show up in the UI</li>
+          <li>Can be dismissed after appearing in the UI</li>
+          <li>Have style variations (same as Message style variations)</li>
+        </ul>
+
+        <h3>Example uses:</h3>
+        <ul>
+          <li>Displaying a "we use cookies" message</li>
+          <li>Displaying form errors</li>
+          <li>
+            Displaying errors after failures in sagas (for example: catching request failures)
+          </li>
+          <li>etc</li>
+        </ul>
       </Typography>
+
+      <br />
 
       <Button
         styleName="create-message-example"
@@ -64,6 +73,21 @@ const Home = ({ createMessage, createErrorMessage }) => (
         onClick={() => createErrorMessage('This is an app error message!')}
         variant="negative"
       >Create an app error message</Button>
+    </section>
+
+    <section>
+      <Typography>
+        <h2>Images</h2>
+        <p>Just imported via <code>file-loader</code>, nothing crazy.</p>
+      </Typography>
+
+      <br />
+
+      <img
+        src={reactImage}
+        alt="react js logo"
+        style={{ width: 100 }}
+      />
     </section>
   </div>
 );

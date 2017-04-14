@@ -45,7 +45,9 @@ export function* getUser(action = {}) {
     const { options } = action;
 
     // adds the error to the app messages
+    err.message = `[sagas.github.getUser] ${err.message}`; // extra info for error message
     if (options.errorMessage) yield put(actions.errors.trackError(err, { errorMessage: true }));
+    // TODO ^ errorPrefix option for trackError?
 
     // failure callback
     if (options.onFailure) options.onFailure(err);
