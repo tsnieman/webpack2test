@@ -6,18 +6,23 @@ import './Home.css';
 import Button from 'components/base/Button';
 import Message from 'components/base/Message';
 import { VARIANTS as MESSAGE_VARIANTS } from 'components/base/Message/Wrapper/Wrapper';
+import Typography from 'components/Typography';
 
 import reactImage from 'images/reactjs.png';
 
 const Home = ({ createMessage, createErrorMessage }) => (
   <div styleName="wrapper">
     <section>
-      <h1>Home page!</h1>
-      <p>(more like kitchen sink)</p>
+      <Typography>
+        <h1>Home page!</h1>
+        <p>(more like kitchen sink)</p>
+      </Typography>
     </section>
 
     <section>
-      <h2>Messages</h2>
+      <Typography>
+        <h2>Messages</h2>
+      </Typography>
 
       {MESSAGE_VARIANTS.map(variant => (
         <div styleName="message" key={variant}>
@@ -31,7 +36,9 @@ const Home = ({ createMessage, createErrorMessage }) => (
     </section>
 
     <section>
-      <h2>Images</h2>
+      <Typography>
+        <h2>Images</h2>
+      </Typography>
 
       <img
         src={reactImage}
@@ -41,9 +48,11 @@ const Home = ({ createMessage, createErrorMessage }) => (
     </section>
 
     <section>
-      <h2>"AppMessages" system...</h2>
-      <p>Dispatch actions (or catch errors in sagas!) for a site-wide messaging system.</p>
-      <p>TODO: better explanation.</p>
+      <Typography>
+        <h2>"AppMessages" system...</h2>
+        <p>Dispatch actions (or catch errors in sagas!) for a site-wide messaging system.</p>
+        <p>TODO: better explanation.</p>
+      </Typography>
 
       <Button
         styleName="create-message-example"
