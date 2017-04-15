@@ -1,0 +1,22 @@
+@import 'styles/_variables';
+
+@keyframes scale {
+  50% {
+    transform: scale(1.75);
+  }
+}
+
+.button {
+  &[data-starred="true"] {
+    background-color: #ffe200;
+
+    /* don't just do `:global .icon` or else the
+     * @keyframe name will be mismatched w/ the
+     * `animation: keyframeName` because it will
+     * be in in :global (block) scope */
+    :global(.icon) {
+      animation: scale 0.25s;
+      animation-iteration-count: 1;
+    }
+  }
+}

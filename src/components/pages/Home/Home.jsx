@@ -4,6 +4,7 @@ import React from 'react';
 import './Home.css';
 
 import Button from 'components/base/Button';
+import StarButton from 'components/StarButton';
 import Message from 'components/base/Message';
 import Icon from 'components/base/Icon';
 import { graphics } from 'components/base/Icon/Icon';
@@ -117,21 +118,27 @@ const Home = ({ createMessage, createErrorMessage }) => (
 
     <section>
       <Typography>
-        <h2>Combos</h2>
+        <h2>Misc examples</h2>
       </Typography>
+
+      <div>
+        <StarButton />
+        {' '}
+        <StarButton starred />
+      </div>
 
       <Typography>
         <p>
-          Testing how Icon looks <Icon icon="star" />
-          inline with some typography <Icon icon="star" />
+          Testing how Icon looks <Icon icon="info" />
+          inline with some typography <Icon icon="info" />
           la la la la la
         </p>
       </Typography>
 
       <div>
-        <Button icon="star">Button[icon]</Button>
+        <Button icon="info">Button[icon]</Button>
         {' '}
-        <Button icon="star" />
+        <Button icon="info" />
       </div>
 
       <br />
@@ -139,9 +146,9 @@ const Home = ({ createMessage, createErrorMessage }) => (
 
       <code>font-size: 2em</code>:
       <div styleName="two-x">
-        <Button icon="star">Button[icon]</Button>
+        <Button icon="info">Button[icon]</Button>
         {' '}
-        <Button icon="star" />
+        <Button icon="info" />
       </div>
     </section>
   </div>
