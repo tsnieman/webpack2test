@@ -10,7 +10,7 @@ import Message from 'components/base/Message';
 import Icon from 'components/base/Icon';
 import { graphics } from 'components/base/Icon/Icon';
 import { VARIANTS as MESSAGE_VARIANTS } from 'components/base/Message/Wrapper/Wrapper';
-import Typography from 'components/Typography';
+import Typography from 'components/base/Typography';
 
 import reactImage from 'images/reactjs.png';
 
@@ -154,6 +154,8 @@ const Home = ({ createMessage, createErrorMessage }) => (
         <Button icon="info">Button[icon]</Button>
         {' '}
         <Button icon="info" />
+        {' '}
+        <Button>Button</Button>
       </div>
 
       <br />

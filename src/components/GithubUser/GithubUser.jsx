@@ -3,8 +3,8 @@ import React from 'react';
 import './GithubUser.css';
 
 // Components
-import Typography from 'components/Typography';
-import Card from 'components/Card';
+import Typography from 'components/base/Typography';
+import Card from 'components/base/Card';
 // import Icon from 'components/Icon';
 // import { Link } from 'react-router';
 

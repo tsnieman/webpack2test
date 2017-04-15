@@ -3,7 +3,7 @@ import React, { PropTypes } from 'react';
 import './Body.css';
 
 // Components
-import Typography from 'components/Typography';
+import Typography from 'components/base/Typography';
 // import Icon from 'components/Icon';
 // import { Link } from 'react-router';
 

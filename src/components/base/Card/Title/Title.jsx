@@ -1,13 +1,13 @@
 // Basics
 import React, { PropTypes } from 'react';
-import './Body.css';
+import './Title.css';
 
 // Components
-import Typography from 'components/Typography';
+import Typography from 'components/base/Typography';
 // import Icon from 'components/Icon';
 // import { Link } from 'react-router';
 
-const Body = (props) => {
+const Title = (props) => {
   const {
     children,
     className,
@@ -17,8 +17,10 @@ const Body = (props) => {
 
   if (children) {
     return (
-      <Typography {...cleanProps} styleName="wrapper" className={`${className} card-body`}>
-        {children}
+      <Typography {...cleanProps} styleName="wrapper" className={`${className} card-title`}>
+        <span styleName="title-text" className="card-title-text">
+          {children}
+        </span>
       </Typography>
     );
   }
@@ -26,15 +28,15 @@ const Body = (props) => {
   return null;
 };
 
-Body.propTypes = {
+Title.propTypes = {
   // eslint-disable-next-line react/forbid-prop-types
-  children: PropTypes.any.isRequired, // TODO better proptype..?
+  children: PropTypes.any, // TODO better proptype..?
   className: PropTypes.string,
 };
 
-Body.defaultProps = {
+Title.defaultProps = {
   children: null,
   className: '',
 };
 
-export default Body;
+export default Title;

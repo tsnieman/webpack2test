@@ -4,7 +4,7 @@ import React from 'react';
 import './About.css';
 
 import Message from 'components/base/Message';
-import Typography from 'components/Typography';
+import Typography from 'components/base/Typography';
 import GithubUser from 'containers/GithubUser';
 
 import { PLAINTEXT_NAME } from 'constants/app';
