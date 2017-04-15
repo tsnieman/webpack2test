@@ -1,0 +1,35 @@
+@import 'styles/_variables';
+
+@keyframes fade-in {
+  0% {
+    opacity: 0.5;
+  }
+
+  20% {
+    transform: scale(1.1);
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.wrapper {
+  user-select: none;
+  cursor: pointer;
+
+  &[data-checked="true"] :global(.icon) {
+    animation: fade-in 0.15s;
+    animation-iteration-count: 1;
+  }
+}
+
+/* Icons are a bit small by default
+ * to be */
+.icon {
+  font-size: 2em;
+  transform: translateY(-0.05em);
+
+  display: inline-block;
+  vertical-align: middle;
+}

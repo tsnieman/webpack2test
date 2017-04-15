@@ -4,6 +4,7 @@ import React from 'react';
 import './Home.css';
 
 import Button from 'components/base/Button';
+import Checkbox from 'components/base/Checkbox';
 import StarButton from 'components/StarButton';
 import Message from 'components/base/Message';
 import Icon from 'components/base/Icon';
@@ -114,6 +115,20 @@ const Home = ({ createMessage, createErrorMessage }) => (
           </li>
         ))}
       </ul>
+    </section>
+
+    <section>
+      <Typography>
+        <h2>Checkbox</h2>
+      </Typography>
+
+      <br />
+
+      <Checkbox>Unchecked</Checkbox>
+
+      <br />
+
+      <Checkbox checked>Checked</Checkbox>
     </section>
 
     <section>
