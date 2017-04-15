@@ -18,7 +18,6 @@ const Actions = (props) => {
   if (!children) return null;
 
   const styleName = styles.wrapper;
-  console.log({ styleName });
 
   return (
     <Typography {...cleanProps} className={`${styleName} ${className} card-actions`}>
