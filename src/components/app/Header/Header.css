@@ -34,3 +34,57 @@
     }
   }
 }
+
+@keyframes infinislide {
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes slidebg {
+  0% {
+   background-position-x: 0;
+  }
+
+  100% {
+   background-position-x: -200px;
+  }
+}
+
+/* Waves animated/adopted from http://stackoverflow.com/a/33763912 */
+.wave {
+  background: var(--color-brand-primary);
+  height: 13px;
+  position: relative;
+
+  &::before{
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-repeat: repeat;
+    height: 10px;
+    background-size: 20px 20px;
+    background-image: radial-gradient(circle at 10px -5px, transparent 12px, white 13px);
+    will-change: background-position-x;
+    animation: slidebg 12s linear;
+    animation-iteration-count: infinite;
+    animation-delay: 3s; /* Time for page to render */
+  }
+
+  &::after{
+    animation: slidebg 12s linear;
+    animation-iteration-count: infinite;
+    animation-delay: 3s; /* Time for page to render */
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-repeat: repeat;
+    height: 15px;
+    background-size: 40px 20px;
+    background-image: radial-gradient(circle at 10px 15px, white 12px, transparent 13px);
+  }
+}

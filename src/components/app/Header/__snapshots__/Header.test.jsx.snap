@@ -1,40 +1,45 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Header is tested 1`] = `
-<header
-  className="components-app-Header-__Header__wrapper__Nv1qS"
->
-  <strong
-    className="components-app-Header-__Header__brand__3uFpN"
+<div>
+  <header
+    className="components-app-Header-__Header__wrapper__Nv1qS"
   >
-    <a
-      href="/"
-      onClick={[Function]}
+    <strong
+      className="components-app-Header-__Header__brand__3uFpN"
     >
-      webpack2test
-    </a>
-  </strong>
-  <nav>
-    <ul
-      className="components-app-Header-__Header__nav-items__1xViP"
-    >
-      <li>
-        <a
-          href="/about"
-          onClick={[Function]}
-        >
-          /about
-        </a>
-      </li>
-      <li>
-        <a
-          href="/404-fake-route"
-          onClick={[Function]}
-        >
-          /404-fake-route
-        </a>
-      </li>
-    </ul>
-  </nav>
-</header>
+      <a
+        href="/"
+        onClick={[Function]}
+      >
+        webpack2test
+      </a>
+    </strong>
+    <nav>
+      <ul
+        className="components-app-Header-__Header__nav-items__1xViP"
+      >
+        <li>
+          <a
+            href="/about"
+            onClick={[Function]}
+          >
+            /about
+          </a>
+        </li>
+        <li>
+          <a
+            href="/404-fake-route"
+            onClick={[Function]}
+          >
+            /404-fake-route
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+  <div
+    className="components-app-Header-__Header__wave__2ji0C"
+  />
+</div>
 `;
