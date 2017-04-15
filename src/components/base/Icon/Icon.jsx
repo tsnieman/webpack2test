@@ -100,10 +100,6 @@ export const graphics = new Map([
 /* eslint-enable max-len */
 
 const Icon = (props) => {
-  const {
-    children,
-  } = props;
-
   const graphic = graphics.get(props.icon);
 
   const cleanProps = { ...props };
@@ -117,24 +113,16 @@ const Icon = (props) => {
         styleName="icon"
         className="icon"
       >{graphic}</svg>
-
-      {children && (
-        <span
-          styleName="label"
-          className="label"
-        >{children}</span>
-      )}
     </span>
   );
 };
 
 Icon.propTypes = {
-  children: PropTypes.any, // eslint-disable-line react/forbid-prop-types
   icon: PropTypes.string.isRequired,
 };
 
 Icon.defaultProps = {
-  children: null,
+  icon: 'star',
 };
 
 export default Icon;

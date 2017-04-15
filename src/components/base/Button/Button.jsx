@@ -1,7 +1,8 @@
 // Basics
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './Button.css';
+import Icon from 'components/base/Icon';
+import styles from './Button.css';
 
 // Components
 // import Icon from 'components/Icon';
@@ -22,6 +23,7 @@ const Button = (props) => {
 
     // Button-specific
     variant,
+    icon,
 
     // link-specific
     to,
@@ -29,7 +31,7 @@ const Button = (props) => {
 
   let styleVariant = 'button-default';
   if (VARIANTS.includes(variant)) {
-    styleVariant = `button-${variant}`;
+    styleVariant = styles[`button-${variant}`];
   }
 
   const cleanProps = {
@@ -44,18 +46,24 @@ const Button = (props) => {
   return isLink ? (
     <Link
       {...cleanProps}
-      styleName={styleVariant}
-      className={className}
+      className={`${styleVariant} ${className}`}
     >
       {children}
     </Link>
   ) : (
     <button
       {...cleanProps}
-      styleName={styleVariant}
-      className={className}
+      className={`${styleVariant} ${className}`}
     >
-      {children}
+      {icon && (
+        <span className={styles.icon}><Icon icon={icon} /></span>
+      )}
+
+      {children && (
+        <span className={styles.label}>
+          {children}
+        </span>
+      )}
     </button>
   );
 };
@@ -67,6 +75,7 @@ Button.propTypes = {
   // Button-specific
   variant: React.PropTypes.string,
   // disabled: React.PropTypes.bool,
+  icon: React.PropTypes.string,
 
   // link-specific
   to: React.PropTypes.string,
@@ -81,6 +90,7 @@ Button.defaultProps = {
   disabled: false,
   variant: 'default',
   to: undefined,
+  icon: undefined,
 };
 
 export default Button;

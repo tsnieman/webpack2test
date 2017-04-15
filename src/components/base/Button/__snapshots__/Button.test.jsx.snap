@@ -2,8 +2,9 @@
 
 exports[`Button is tested 1`] = `
 <button
-  className="components-base-Button-__Button__button-default__3qwt0 components-base-Button-__Button__button-base__2WRVG"
+  className="button-default "
   disabled={false}
+  icon={undefined}
   to={undefined}
 >
   

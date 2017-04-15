@@ -4,11 +4,7 @@
 
 .icon {
   fill: currentcolor;
-  width: 1em;
+  width: auto;
   height: 0.83399em; /* or else icons are slightly bigger than font size.
                         noticed when when IconButton was bigger than Button */
-}
-
-.label {
-  margin-left: 0.25em;
 }

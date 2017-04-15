@@ -29,8 +29,8 @@
   --color-negative: #ca4b4b;
 
   /* Typography */
-  --body-font-size: 16px;
-  --site-text-color: var(--tyre);
+  --body-font-size: 18px;
+  --site-text-color: var(--color-gray-30);
   /*$site-font-family: 'Roboto', sans-serif;*/
   --site-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   --site-line-height: 1.4;

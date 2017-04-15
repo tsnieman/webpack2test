@@ -43,6 +43,16 @@
   }
 }
 
+.icon {
+  display: inline-block;
+  vertical-align: -0.05em;
+  transform: scale(1.25);
+
+  + .label {
+    margin-left: var(--button-padding-h);
+  }
+}
+
 .button-base {
   display: inline-block;
 

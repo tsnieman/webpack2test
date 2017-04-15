@@ -30,4 +30,11 @@
 
 .icon-list {
   font-size: 1.5em;
+  column-count: 2;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.two-x {
+  font-size: 2em;
 }

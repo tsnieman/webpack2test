@@ -113,7 +113,36 @@ const Home = ({ createMessage, createErrorMessage }) => (
           </li>
         ))}
       </ul>
+    </section>
 
+    <section>
+      <Typography>
+        <h2>Combos</h2>
+      </Typography>
+
+      <Typography>
+        <p>
+          Testing how Icon looks <Icon icon="star" />
+          inline with some typography <Icon icon="star" />
+          la la la la la
+        </p>
+      </Typography>
+
+      <div>
+        <Button icon="star">Button[icon]</Button>
+        {' '}
+        <Button icon="star" />
+      </div>
+
+      <br />
+      <br />
+
+      <code>font-size: 2em</code>:
+      <div styleName="two-x">
+        <Button icon="star">Button[icon]</Button>
+        {' '}
+        <Button icon="star" />
+      </div>
     </section>
   </div>
 );
