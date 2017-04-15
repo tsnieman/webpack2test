@@ -35,12 +35,6 @@
   }
 }
 
-@keyframes infinislide {
-  100% {
-    transform: translateX(-100%);
-  }
-}
-
 @keyframes slidebg {
   0% {
    background-position-x: 0;
