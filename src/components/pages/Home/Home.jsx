@@ -5,10 +5,15 @@ import './Home.css';
 
 import Button from 'components/base/Button';
 import Message from 'components/base/Message';
+import Icon from 'components/base/Icon';
+import { graphics } from 'components/base/Icon/Icon';
 import { VARIANTS as MESSAGE_VARIANTS } from 'components/base/Message/Wrapper/Wrapper';
 import Typography from 'components/Typography';
 
 import reactImage from 'images/reactjs.png';
+
+const iconList = [];
+graphics.forEach((value, key) => iconList.push(key));
 
 const Home = ({ createMessage, createErrorMessage }) => (
   <div styleName="wrapper">
@@ -88,6 +93,27 @@ const Home = ({ createMessage, createErrorMessage }) => (
         alt="react js logo"
         style={{ width: 100 }}
       />
+    </section>
+
+    <section>
+      <Typography>
+        <h2>Icons</h2>
+        <p>
+          Inlined SVGs via an <code>&lt;Icon icon="x" /&gt;</code> component.
+          Pretty no-frills.
+        </p>
+      </Typography>
+
+      <br />
+
+      <ul styleName="icon-list">
+        {iconList.map(value => (
+          <li key={value}>
+            <Icon icon={value} /> <code>{value}</code>
+          </li>
+        ))}
+      </ul>
+
     </section>
   </div>
 );
