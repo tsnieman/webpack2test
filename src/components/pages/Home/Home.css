@@ -38,3 +38,17 @@
 .two-x {
   font-size: 2em;
 }
+
+.cards {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+
+  > * {
+    flex-grow: 1;
+    max-width: calc(50% - 1rem);
+    margin-bottom: 1rem;
+  }
+}

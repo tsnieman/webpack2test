@@ -46,14 +46,22 @@ const Button = (props) => {
   return isLink ? (
     <Link
       {...cleanProps}
-      className={`${styleVariant} ${className}`}
+      className={`button ${styleVariant} ${className}`}
     >
-      {children}
+      {icon && (
+        <span className={styles.icon}><Icon icon={icon} /></span>
+      )}
+
+      {children && (
+        <span className={styles.label}>
+          {children}
+        </span>
+      )}
     </Link>
   ) : (
     <button
       {...cleanProps}
-      className={`${styleVariant} ${className}`}
+      className={`button ${styleVariant} ${className}`}
     >
       {icon && (
         <span className={styles.icon}><Icon icon={icon} /></span>

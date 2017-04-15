@@ -1,6 +1,6 @@
 // Basics
 import React, { PropTypes } from 'react';
-import './Actions.css';
+import styles from './Actions.css';
 
 // Components
 import Typography from 'components/base/Typography';
@@ -15,15 +15,16 @@ const Actions = (props) => {
 
   const cleanProps = { ...props };
 
-  if (children) {
-    return (
-      <Typography {...cleanProps} styleName="wrapper" className={`${className} card-actions`}>
-        {children}
-      </Typography>
-    );
-  }
+  if (!children) return null;
 
-  return null;
+  const styleName = styles.wrapper;
+  console.log({ styleName });
+
+  return (
+    <Typography {...cleanProps} className={`${styleName} ${className} card-actions`}>
+      {children}
+    </Typography>
+  );
 };
 
 Actions.propTypes = {

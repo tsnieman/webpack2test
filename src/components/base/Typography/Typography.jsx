@@ -1,6 +1,6 @@
 // Basics
 import React from 'react';
-import './Typography.css';
+import styles from './Typography.css';
 
 const Typography = (props) => {
   const {
@@ -17,7 +17,7 @@ const Typography = (props) => {
   const styleModule = loading ? 'wrapper-loading' : 'wrapper';
 
   return (
-    <div {...cleanProps} styleName={styleModule}>
+    <div {...cleanProps} className={`${styles[styleModule]} ${cleanProps.className}`}>
       {content}
     </div>
   );

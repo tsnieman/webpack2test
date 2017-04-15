@@ -4,6 +4,7 @@ import React from 'react';
 import './Home.css';
 
 import Button from 'components/base/Button';
+import Card from 'components/base/Card';
 import Checkbox from 'components/base/Checkbox';
 import StarButton from 'components/StarButton';
 import Message from 'components/base/Message';
@@ -129,6 +130,62 @@ const Home = ({ createMessage, createErrorMessage }) => (
       <br />
 
       <Checkbox checked>Checked</Checkbox>
+    </section>
+
+    <section>
+      <Typography>
+        <h2>Card</h2>
+      </Typography>
+
+      <br />
+
+      <div styleName="cards">
+        <Card.Wrapper>
+          <Card.Media>
+            <img
+              src="http://placehold.it/350x350?text=Card.Media"
+              alt="media example"
+            />
+          </Card.Media>
+
+          <Card.Title>
+            Card.Title
+          </Card.Title>
+
+          <Card.Body>
+            Card.Body
+          </Card.Body>
+
+          <Card.Actions>
+            <StarButton />
+            <Button icon="delete" />
+          </Card.Actions>
+        </Card.Wrapper>
+
+        <Card.Wrapper>
+          <Card.Title>
+            <Typography>
+              <h2>Checkbox</h2>
+            </Typography>
+          </Card.Title>
+
+          <Card.Body>
+            <Typography>
+              <p>Card.Body</p>
+              <ul>
+                <li>Dot</li>
+                <li>Dot</li>
+                <li>Dot</li>
+              </ul>
+            </Typography>
+          </Card.Body>
+
+          <Card.Actions>
+            <StarButton />
+            <Button icon="delete" />
+          </Card.Actions>
+        </Card.Wrapper>
+      </div>
     </section>
 
     <section>

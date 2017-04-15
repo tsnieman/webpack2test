@@ -2,10 +2,20 @@
 @import '../Card.css';
 
 .wrapper {
+  border-top: 1px solid var(--border-color);
+  margin-top: var(--content-padding);
+  margin-right: calc(-1 * var(--content-padding));
+  margin-left: calc(-1 * var(--content-padding));
+  padding-top: var(--content-padding);
+  padding-right: var(--content-padding);
+  padding-left: var(--content-padding);
+
+  text-align: right;
+
   :global {
     .button {
       + .button {
-        margin-left: 1em;
+        margin-left: 0.5em;
       }
     }
   }
