@@ -160,5 +160,5 @@ module.exports = {
   },
 
   // Source maps
-  devtool: 'eval',
+  devtool: 'eval-source-map',
 };

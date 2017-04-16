@@ -4,6 +4,8 @@ import { Provider } from 'react-redux';
 import Helmet from 'react-helmet';
 import RootRouter from 'components/app/RootRouter';
 
+import DevTools from 'containers/DevTools';
+
 import {
   PLAINTEXT_NAME,
   DEFAULT_TITLE,
@@ -16,6 +18,8 @@ import '../../../styles/_typography.css';
 const Root = ({ store }) => (
   <Provider store={store}>
     <div>
+      {process.env.NODE_ENV === 'development' && (<DevTools />)}
+
       <Helmet
         htmlAttributes={{
           lang: 'en',

@@ -190,6 +190,16 @@ const Home = ({ createMessage, createErrorMessage }) => (
 
     <section>
       <Typography>
+        <h2>Redux DevTools</h2>
+        <ul>
+          <li>Hit <code>ctrl y</code> to get the dock</li>
+          <li>... Then, hit <code>ctrl m</code> to change side the dock fixed to</li>
+        </ul>
+      </Typography>
+    </section>
+
+    <section>
+      <Typography>
         <h2>Misc examples</h2>
       </Typography>
 

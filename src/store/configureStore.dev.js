@@ -2,7 +2,7 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 
 // Redux devtools
-// import DevTools from 'containers/DevTools';
+import DevTools from 'containers/DevTools';
 
 // Redux middleware
 import createSagaMiddleware from 'redux-saga';
@@ -21,11 +21,13 @@ export default function configureStore(initialState) {
     initialState,
     compose(
       applyMiddleware(sagaMiddleware),
-      // DevTools.instrument(),
+      DevTools.instrument(),
     ),
   );
 
   sagaMiddleware.run(rootSaga);
+
+  // TODO  if (module.hot) { ... }
 
   return store;
 }
