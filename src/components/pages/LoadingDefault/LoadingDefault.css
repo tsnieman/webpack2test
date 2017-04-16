@@ -1,0 +1,6 @@
+@import 'styles/_variables.css';
+
+.wrapper {
+  text-align: center;
+  font-size: 5em;
+}

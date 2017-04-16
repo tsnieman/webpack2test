@@ -35,8 +35,7 @@ class Bundle extends React.Component {
   }
 
   render() {
-    // TODO added the following line, otherwise was getting errors.
-    if (!this.state.mod) return <div>Loading...</div>;
+    if (!this.state.mod) return this.props.loading;
 
     return this.props.children(this.state.mod);
   }
@@ -45,6 +44,12 @@ class Bundle extends React.Component {
 Bundle.propTypes = {
   children: React.PropTypes.func.isRequired,
   load: React.PropTypes.func.isRequired,
+  loading: React.PropTypes.any, // eslint-disable-line react/forbid-prop-types
+};
+
+Bundle.defaultProps = {
+  loading: <div>Loading...</div>,
+  // PLACEHOLDER
 };
 
 export default Bundle;

@@ -9,6 +9,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import AppMessages from 'containers/app/AppMessages';
 import Header from 'components/app/Header';
 import HTTP404Page from 'components/pages/HTTP404';
+import LoadingDefault from 'components/pages/LoadingDefault';
 
 // Declarative webpack code-splitting / component loading
 import Bundle from 'components/utility/Bundle';
@@ -30,7 +31,10 @@ const RootRouter = () => (
             exact
             path="/"
             render={props => (
-              <Bundle load={loadHome}>
+              <Bundle
+                load={loadHome}
+                loading={<LoadingDefault />}
+              >
                 {Home => <Home {...props} />}
               </Bundle>
             )}
@@ -40,7 +44,10 @@ const RootRouter = () => (
             exact
             path="/about"
             render={props => (
-              <Bundle load={loadAbout}>
+              <Bundle
+                load={loadAbout}
+                loading={<LoadingDefault />}
+              >
                 {About => <About {...props} />}
               </Bundle>
             )}
