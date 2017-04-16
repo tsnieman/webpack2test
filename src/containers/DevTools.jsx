@@ -18,7 +18,7 @@ const DevTools = createDevTools(
     defaultIsVisible={false}
   >
     <LogMonitor theme="tomorrow" />
-  </DockMonitor>,
+  </DockMonitor> // eslint-disable-line comma-dangle
 );
 
 export default DevTools;
