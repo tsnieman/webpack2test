@@ -9,6 +9,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const OfflinePlugin = require('offline-plugin');
 const OptimizeJsPlugin = require("optimize-js-plugin");
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
   target: "web",
@@ -35,7 +36,7 @@ module.exports = {
   // The bundle outputs
   output: {
     path: path.resolve(__dirname, '..', 'public'),
-    filename: '[name].bundle.js',
+    filename: '[name]-[chunkhash].bundle.js',
     publicPath: '/', // as it will be served
     chunkFilename: '[name]-[chunkhash].js',
   },
@@ -50,7 +51,7 @@ module.exports = {
     // TODO use https://medium.com/webpack/webpack-bits-getting-the-most-out-of-the-commonschunkplugin-ab389e5f318#.bl0jid69f
 		new webpack.optimize.CommonsChunkPlugin({
 			name: 'commons',
-			filename: 'commons.bundle.js',
+			filename: 'commons-[chunkhash].bundle.js',
 			minChunks: 2,
 		}),
 
@@ -63,6 +64,11 @@ module.exports = {
 
     // Recommended (NoErrorsPlugin is deprecated)
     new webpack.NoEmitOnErrorsPlugin(),
+
+    new ExtractTextPlugin({
+      filename: 'styles-[chunkhash].css',
+      allChunks: true,
+    }),
 
     // Generate HTML to serve
     new HtmlWebpackPlugin({
@@ -170,6 +176,24 @@ module.exports = {
       // CSS
       {
         test: /\.css$/,
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: [
+            {
+              loader: 'css-loader',
+              options: {
+                modules: true,
+                importLoaders: 2,
+                localIdentName: '[path]__[name]__[local]__[hash:base64:5]',
+              },
+            },
+            'postcss-loader', // options in postcss.config.js
+          ],
+        }),
+      },
+      /*
+      {
+        test: /\.css$/,
         use: [
           "style-loader",
           {
@@ -183,6 +207,7 @@ module.exports = {
           "postcss-loader", // options in postcss.config.js
         ],
       },
+      */
 
       // Images
       {
