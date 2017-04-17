@@ -117,9 +117,7 @@ module.exports = {
 
       caches: {
         main: [
-          'commons.bundle.js',
-          'vendor.bundle.js',
-          'app.bundle.js',
+          '*.bundle.js',
           ':rest:',
         ],
         additional: [
