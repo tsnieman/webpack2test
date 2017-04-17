@@ -39,6 +39,10 @@ module.exports = {
   },
 
   plugins: [
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify('development'),
+    }),
+
     // https://github.com/lodash/lodash-webpack-plugin
     new LodashModuleReplacementPlugin,
 
