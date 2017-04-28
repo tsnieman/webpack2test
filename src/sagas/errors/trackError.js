@@ -1,6 +1,5 @@
 // Basics
-import { takeEvery } from 'redux-saga';
-import { put, cancelled } from 'redux-saga/effects';
+import { put, cancelled, takeEvery } from 'redux-saga/effects';
 import actions from 'actions';
 // import services from 'services';
 
@@ -45,5 +44,5 @@ export function* trackError(action = {}) {
 }
 
 export default function* watchTrackError() {
-  yield* takeEvery(ERRORS_ACTIONS.TRACK_ERROR, trackError);
+  yield takeEvery(ERRORS_ACTIONS.TRACK_ERROR, trackError);
 }

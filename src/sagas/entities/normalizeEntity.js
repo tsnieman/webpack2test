@@ -1,6 +1,5 @@
 // Basics
-import { takeEvery } from 'redux-saga';
-import { cancelled, put } from 'redux-saga/effects';
+import { cancelled, put, takeEvery } from 'redux-saga/effects';
 // import actions from 'actions';
 // import services from 'services';
 
@@ -58,5 +57,5 @@ export function* normalizeEntity(action = {}) {
 // or will i mostly use this saga via delegation
 // from another saga? i.e. `yield* normalizeEntity(...)`
 export default function* watchNormalizeEntity() {
-  yield* takeEvery(ENTITIES_ACTIONS.NORMALIZE_ENTITY, normalizeEntity);
+  yield takeEvery(ENTITIES_ACTIONS.NORMALIZE_ENTITY, normalizeEntity);
 }

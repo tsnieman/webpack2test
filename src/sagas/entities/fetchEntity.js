@@ -1,6 +1,5 @@
 // Basics
-import { takeEvery } from 'redux-saga';
-import { call, cancelled } from 'redux-saga/effects';
+import { call, cancelled, takeEvery } from 'redux-saga/effects';
 // import actions from 'actions';
 // import services from 'services';
 
@@ -42,5 +41,5 @@ export function* fetchEntity(action = {}) {
 // or will i mostly use this saga via delegation
 // from another saga? i.e. `yield* fetchEntity(...)`
 export default function* watchFetchEntity() {
-  yield* takeEvery(ENTITIES_ACTIONS.FETCH_ENTITY, fetchEntity);
+  yield takeEvery(ENTITIES_ACTIONS.FETCH_ENTITY, fetchEntity);
 }

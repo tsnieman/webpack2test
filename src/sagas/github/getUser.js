@@ -1,6 +1,5 @@
 // Basics
-import { takeEvery } from 'redux-saga';
-import { put, call, cancelled } from 'redux-saga/effects';
+import { put, call, cancelled, takeEvery } from 'redux-saga/effects';
 import actions from 'actions';
 import services from 'services';
 import delay from 'helpers/delay';
@@ -62,5 +61,5 @@ export function* getUser(action = {}) {
 }
 
 export default function* watchGetUser() {
-  yield* takeEvery(GITHUB_ACTIONS.GET_USER, getUser);
+  yield takeEvery(GITHUB_ACTIONS.GET_USER, getUser);
 }
