@@ -3,10 +3,10 @@ import { ACTIONS as MESSAGES_ACTIONS } from 'constants/messages';
 // Helpers
 import shortid from 'shortid';
 
-export function createMessage({ body, variant }) {
+export function createMessage({ id = shortid.generate(), body, variant }) {
   return {
     type: MESSAGES_ACTIONS.CREATE_MESSAGE,
-    id: shortid.generate(),
+    id,
     body,
     variant,
   };

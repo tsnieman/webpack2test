@@ -10,6 +10,7 @@ import AppMessages from 'containers/app/AppMessages';
 import Header from 'components/app/Header';
 import HTTP404Page from 'components/pages/HTTP404';
 import LoadingDefault from 'components/pages/LoadingDefault';
+import NetworkStatus from 'containers/app/NetworkStatus';
 
 // Declarative webpack code-splitting / component loading
 import Bundle from 'components/utility/Bundle';
@@ -22,6 +23,8 @@ const RootRouter = () => (
   <BrowserRouter>
     <div>
       <AppMessages />
+
+      <NetworkStatus />
 
       <Header />
 

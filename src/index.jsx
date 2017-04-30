@@ -13,23 +13,23 @@ import * as OfflinePluginRuntime from 'offline-plugin/runtime';
 if (process.env.NODE_ENV === 'production') {
   OfflinePluginRuntime.install({
     onInstalled: function onInstalled() {
+      // eslint-disable-next-line no-console
       console.log('OfflinePluginRuntime.onInstalled');
     },
     onUpdateReady: function onUpdateReady() {
+      // eslint-disable-next-line no-console
       console.log('OfflinePluginRuntime.onUpdateReady');
     },
     onUpdating: function onUpdating() {
+      // eslint-disable-next-line no-console
       console.log('OfflinePluginRuntime.onUpdating');
     },
     onUpdated: function onUpdated() {
+      // eslint-disable-next-line no-console
       console.log('OfflinePluginRuntime.onUpdated');
     },
     // onUpdateReady: () => OfflinePluginRuntime.applyUpdate(),
     // onUpdated: () => window.swUpdate = true,
-  });
-
-  window.addEventListener('offline', () => {
-    console.log('Went offline!');
   });
 }
 
