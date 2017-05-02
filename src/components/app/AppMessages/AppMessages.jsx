@@ -13,18 +13,15 @@ const AppMessages = (props) => {
     className,
     messages,
     removeMessage,
+    ...otherProps
   } = props;
 
   // const hasMessages = (messages && messages.length > 0);
   // if (!hasMessages) return null;
 
-  const cleanProps = { ...props };
-  delete cleanProps.messages; // AppMessages-specific
-  delete cleanProps.removeMessage; // AppMessages-specific
-
   return (
     <div
-      {...cleanProps}
+      {...otherProps}
       styleName="wrapper"
       className={`${className} app-messages-wrapper`}
     >

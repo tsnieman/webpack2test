@@ -4,8 +4,6 @@ exports[`Button is tested 1`] = `
 <button
   className="button button-default "
   disabled={false}
-  icon={undefined}
-  to={undefined}
 >
   
 </button>

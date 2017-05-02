@@ -11,11 +11,8 @@ const StarButton = enhance((props) => {
   const {
     starred,
     setStarred,
+    ...otherProps
   } = props;
-
-  const cleanProps = { ...props };
-  delete cleanProps.starred; // StarButton-specific
-  delete cleanProps.setStarred; // StarButton-specific
 
   const toggleStar = () => setStarred(n => !n);
 
@@ -24,7 +21,7 @@ const StarButton = enhance((props) => {
 
   return (
     <Button
-      {...cleanProps}
+      {...otherProps}
       icon={icon}
       onClick={toggleStar}
       styleName="button"

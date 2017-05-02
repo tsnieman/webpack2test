@@ -31,13 +31,12 @@ class Checkbox extends React.Component {
   render() {
     const {
       children,
+      ...otherProps
     } = this.props;
+
     const {
       checked,
     } = this.state;
-
-    const cleanProps = { ...this.props };
-    delete cleanProps.checked; // Checkbox-specific
 
     const icon = checked ? 'check-box' : 'check-box-outline-blank';
 
@@ -47,7 +46,7 @@ class Checkbox extends React.Component {
     // PLAIN ESLINT WHEN APP IS RUNNING? NEW NPM CMD? IDK WELL SEE! STAY TUNED FOLKS.
     return (
       <div
-        {...cleanProps}
+        {...otherProps}
         type="button"
         styleName="wrapper"
         onClick={this.toggleCheck}

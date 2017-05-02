@@ -19,9 +19,8 @@ const Wrapper = (props) => {
   const {
     children,
     className,
+    ...otherProps
   } = props;
-
-  const cleanProps = { ...props };
 
   if (children) {
     /*
@@ -35,7 +34,7 @@ const Wrapper = (props) => {
     */
 
     return (
-      <div {...cleanProps} styleName="wrapper" className={`${className} card-wrapper`}>
+      <div {...otherProps} styleName="wrapper" className={`${className} card-wrapper`}>
         {children}
       </div>
     );

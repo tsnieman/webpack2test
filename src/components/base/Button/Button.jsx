@@ -27,6 +27,8 @@ const Button = (props) => {
 
     // link-specific
     to,
+
+    ...otherProps
   } = props;
 
   let styleVariant = 'button-default';
@@ -34,18 +36,13 @@ const Button = (props) => {
     styleVariant = styles[`button-${variant}`];
   }
 
-  const cleanProps = {
-    ...props,
-  };
-  delete cleanProps.variant; // Button-specific
-
 
   // Depending on props passed, Button might
   // be a `<button>` or `<ReactRouter.Link>`
   const isLink = !!to;
   return isLink ? (
     <Link
-      {...cleanProps}
+      {...otherProps}
       className={`button ${styleVariant} ${className}`}
     >
       {icon && (
@@ -60,7 +57,7 @@ const Button = (props) => {
     </Link>
   ) : (
     <button
-      {...cleanProps}
+      {...otherProps}
       className={`button ${styleVariant} ${className}`}
     >
       {icon && (

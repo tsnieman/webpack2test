@@ -11,14 +11,12 @@ const Actions = (props) => {
   const {
     children,
     className,
+    ...otherProps
   } = props;
-
-  const cleanProps = { ...props };
-  delete cleanProps.styles;
 
   if (children) {
     return (
-      <Typography {...cleanProps} styleName="wrapper" className={`${className} message-actions`}>
+      <Typography {...otherProps} styleName="wrapper" className={`${className} message-actions`}>
         {children}
       </Typography>
     );

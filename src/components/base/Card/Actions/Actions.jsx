@@ -11,16 +11,15 @@ const Actions = (props) => {
   const {
     children,
     className,
+    ...otherProps
   } = props;
-
-  const cleanProps = { ...props };
 
   if (!children) return null;
 
   const styleName = styles.wrapper;
 
   return (
-    <Typography {...cleanProps} className={`${styleName} ${className} card-actions`}>
+    <Typography {...otherProps} className={`${styleName} ${className} card-actions`}>
       {children}
     </Typography>
   );

@@ -11,13 +11,12 @@ const Title = (props) => {
   const {
     children,
     className,
+    ...otherProps
   } = props;
-
-  const cleanProps = { ...props };
 
   if (children) {
     return (
-      <Typography {...cleanProps} styleName="wrapper" className={`${className} card-title`}>
+      <Typography {...otherProps} styleName="wrapper" className={`${className} card-title`}>
         <span styleName="title-text" className="card-title-text">
           {children}
         </span>

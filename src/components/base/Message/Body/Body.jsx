@@ -11,14 +11,12 @@ const Body = (props) => {
   const {
     children,
     className,
+    ...otherProps
   } = props;
-
-  const cleanProps = { ...props };
-  delete cleanProps.styles; // avoid react-css-modules related errors
 
   if (children) {
     return (
-      <Typography {...cleanProps} styleName="wrapper" className={`${className} message-body`}>
+      <Typography {...otherProps} styleName="wrapper" className={`${className} message-body`}>
         {/* <Icon icon="info" styleName="icon" /> */}
         {children}
       </Typography>

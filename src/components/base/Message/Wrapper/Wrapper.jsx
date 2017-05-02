@@ -26,16 +26,13 @@ const Wrapper = (props) => {
     children,
     className,
     variant,
+    ...otherProps
   } = props;
 
   let styleVariant = 'message-default';
   if (VARIANTS.includes(variant)) {
     styleVariant = `message-${variant}`;
   }
-
-  const cleanProps = { ...props };
-  delete cleanProps.styles; // avoid react-css-modules related errors
-  delete cleanProps.variant; // Message-specific
 
   if (children) {
     /*
@@ -51,7 +48,7 @@ const Wrapper = (props) => {
     const styleName = styles[styleVariant];
 
     return (
-      <div {...cleanProps} className={`${styleName} ${className} message-wrapper`}>
+      <div {...otherProps} className={`${styleName} ${className} message-wrapper`}>
         {children}
       </div>
     );

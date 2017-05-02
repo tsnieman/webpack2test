@@ -11,13 +11,12 @@ const Body = (props) => {
   const {
     children,
     className,
+    ...otherProps
   } = props;
-
-  const cleanProps = { ...props };
 
   if (children) {
     return (
-      <Typography {...cleanProps} styleName="wrapper" className={`${className} card-body`}>
+      <Typography {...otherProps} styleName="wrapper" className={`${className} card-body`}>
         {children}
       </Typography>
     );

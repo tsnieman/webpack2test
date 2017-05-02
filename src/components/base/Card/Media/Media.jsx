@@ -10,13 +10,12 @@ const Media = (props) => {
   const {
     children,
     className,
+    ...otherProps
   } = props;
-
-  const cleanProps = { ...props };
 
   if (children) {
     return (
-      <div {...cleanProps} styleName="wrapper" className={`${className} card-media`}>
+      <div {...otherProps} styleName="wrapper" className={`${className} card-media`}>
         {children}
       </div>
     );

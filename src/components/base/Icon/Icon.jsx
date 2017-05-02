@@ -92,13 +92,15 @@ export const graphics = new Map([
 /* eslint-enable max-len */
 
 const Icon = (props) => {
-  const graphic = graphics.get(props.icon);
+  const {
+    icon,
+    ...otherProps
+  } = props;
 
-  const cleanProps = { ...props };
-  delete cleanProps.icon; // Icon-specific
+  const graphic = graphics.get(icon);
 
   return (
-    <span {...cleanProps} styleName="wrapper">
+    <span {...otherProps} styleName="wrapper">
       <svg
         viewBox="0 0 24 24"
         preserveAspectRatio="xMidYMid meet"
